@@ -60,6 +60,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84f2cd2ffd260b4468889a43eaf3512b
+    m_Address: 2DPrefab/DropItem_Trap
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 988485599ab6ecb4db508e35e6b5086a
     m_Address: Sound/Pugmia_Bgm_Housing_1
     m_ReadOnly: 0

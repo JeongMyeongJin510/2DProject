@@ -50,5 +50,18 @@
     "DropItemDataId": "Item_Carrot_1",
     "IconPath": null,
     "PrefabPath": "2DPrefab/Harvest_Carrot"
+  },
+  {
+    "Id": "dropItem_trap_1",
+    "FieldObjectType": "DropItem",
+    "Name": "곰덫",
+    "Description": "드랍된 곰덫",
+    "DropCountRange": [
+      10,
+      1000
+    ],
+    "DropItemDataId": "Item_Trap_1",
+    "IconPath": null,
+    "PrefabPath": "2DPrefab/DropItem_Trap"
   }
 ]

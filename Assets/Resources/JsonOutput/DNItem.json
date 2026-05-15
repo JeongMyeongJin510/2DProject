@@ -58,5 +58,15 @@
     "MaxStackCount": 20,
     "SellingPrice": 100,
     "IconPath": "Icon/Icon_Item_Equip_Hat_1"
+  },
+  {
+    "Id": "Item_Trap_1",
+    "Name": "곰덫",
+    "Description": "곰덫이다",
+    "ItemType": "Normal",
+    "Grade": "Normal",
+    "MaxStackCount": 20,
+    "SellingPrice": 100,
+    "IconPath": "Icon/Icon_Item_Trap_1"
   }
 ]

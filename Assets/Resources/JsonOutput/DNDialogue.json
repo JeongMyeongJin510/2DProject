@@ -74,5 +74,35 @@
     "SelectionDialogueIdList": null,
     "TexturePath": null,
     "VoicePath": null
+  },
+  {
+    "Id": "dialogue_mainstream_2_1_100",
+    "CharacterDataId": null,
+    "Description": "새로운 세계에 접속 하셨습니다…<np>여긴 꿈속 세상입니다.<np>여기서 탈출할 방법을 찾아야 합니다.",
+    "NextDialogueId": "dialogue_mainstream_2_1_200",
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Texture2D_Loading_1",
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_mainstream_2_1_200",
+    "CharacterDataId": null,
+    "Description": "저 멀리 무언가 격렬하게 움직이고 있습니다...<np>자세히 살펴보니 잔뜩 흥분한 슬라임이었습니다!",
+    "NextDialogueId": "dialogue_mainstream_2_1_300",
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": null,
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_mainstream_2_1_300",
+    "CharacterDataId": null,
+    "Description": "저 슬라임에게 간다면 탈출할 방법이 있을지도 모른다는 생각에 다가가기로 결정했습니다!",
+    "NextDialogueId": null,
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": null,
+    "VoicePath": "Sound/Voice_Pug_1_I_WantToEatPizza"
   }
 ]

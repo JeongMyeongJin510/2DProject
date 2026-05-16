@@ -134,8 +134,12 @@ public class MJ_2DPlayer : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 6-1) 플레이어의 > 콜리전에 충돌한 객체가 어떤 Tag인지 1차 검사한다.
-            // 지면 같은 오브젝트와 점프시 충돌이 계속 오므로 이렇게 태그로 먼저 비교하는게 좋다
-            // 중단점을 찍어보면서 확인 추천
+        // 지면 같은 오브젝트와 점프시 충돌이 계속 오므로 이렇게 태그로 먼저 비교하는게 좋다
+        // 중단점을 찍어보면서 확인 추천
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            HandleGameOver("슬라이무에게 당했습니다!");
+        }
         if (collision.gameObject.CompareTag("Enemy") == false)
         {
             return;
@@ -154,6 +158,26 @@ public class MJ_2DPlayer : MonoBehaviour
 
         // 6-4) 피그미를 잡으면 스코어를 올려주자!
         AddGameScore();
+
+        
+    }
+
+    private void HandleGameOver(string msg)
+    {
+        Debug.LogWarning($"게임 오버 : {msg}");
+        if (DaniTechUIManager.Instance != null)
+        {
+            DaniTechUIManager.Instance.OpenSimplePopup($"GAME OVER\n{msg}");
+        }
+        this.enabled = false;
+        Invoke("RealQuitGame", 2f);
+
+    }
+
+    private void RealQuitGame()
+    {
+        Debug.LogWarning("게임이 실제로 종료됩니다~");
+        Application.Quit();
     }
 
     private void AddGameScore()

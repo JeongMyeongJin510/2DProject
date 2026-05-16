@@ -23,8 +23,8 @@ public class DaniTech_MainUI : DaniTechUIBase
 
     public void OnClick_OpenMyProfile()
     {
-        //UIManager.Instance.OpenMyProfilePopup("character_hellena_01");
-        DaniTechUIManager.Instance.OpenInventoryPopup();
+        DaniTechUIManager.Instance.OpenMyProfilePopup("character_hellena_01");
+        //DaniTechUIManager.Instance.OpenInventoryPopup();
         Debug.LogWarning("프로필 오픈");
     }
 

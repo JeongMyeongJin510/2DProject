@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027918110998873038}
-  - component: {fileID: 3616370670184610527}
+  - component: {fileID: 5862308534516328882}
   m_Layer: 5
   m_Name: MainUI
   m_TagString: Untagged
@@ -119,7 +119,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3616370670184610527
+--- !u!114 &5862308534516328882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,13 +128,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 178764241263109658}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e33fd50b90ea125458a60b04913339fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 45195d33244b3bc43b0230dfa3cd1b9f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DaniTechMainUI
+  m_EditorClassIdentifier: Assembly-CSharp::MainUI
   Btn_MyProfile: {fileID: 8974157086909967386}
   Btn_StartBattle: {fileID: 8722663194214332614}
   Btn_MonsterSpawn: {fileID: 6030322839710180929}
   Btn_OpenInventory: {fileID: 8041208429853901767}
+  Btn_GameOption: {fileID: 3520789131222307802}
+  Btn_GameClose: {fileID: 8319621240822121228}
 --- !u!1 &457182103037420698
 GameObject:
   m_ObjectHideFlags: 0

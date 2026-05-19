@@ -22,7 +22,8 @@ public enum DaniTechUIType
     MainUI,
     Popup_GameOption,
     LobbyUI,
-    MiniPJ_MainUI
+    MiniPJ_MainUI,
+    GameBookUI
 }
 
 public static class DaniTechUIManagerExtension

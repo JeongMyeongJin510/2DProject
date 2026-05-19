@@ -5,14 +5,22 @@ public class MiniPJ_MainUI : DaniTechUIBase
     [SerializeField] private DaniTechUIButton Btn_GameClose;
     [SerializeField] private DaniTechUIButton Btn_GameBack;
     [SerializeField] private DaniTechUIButton Btn_GameOption;
+    [SerializeField] private DaniTechUIButton Btn_GameBook;
+
 
     private void OnEnable()
     {
         Btn_GameClose.BindOnClickButtonEvent(OnClick_GameClose);
         Btn_GameBack.BindOnClickButtonEvent(OnClick_GameBack);
         Btn_GameOption.BindOnClickButtonEvent(OnClick_GameOption);
+        Btn_GameBook.BindOnClickButtonEvent(OnClick_OpenGameBook);
+
     }
 
+    public void OnClick_OpenGameBook()
+    {
+        DaniTechUIManager.Instance.OpenContentUI(DaniTechUIType.GameBookUI);
+    }
     public void OnClick_GameClose()
     {
         Debug.LogWarning("눌러짐");

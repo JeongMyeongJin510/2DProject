@@ -68,5 +68,75 @@
     "MaxStackCount": 20,
     "SellingPrice": 100,
     "IconPath": "Icon/Icon_Item_Trap_1"
+  },
+  {
+    "Id": "Item_RoyalTunic",
+    "Name": "로얄튜닉",
+    "Description": "로얄튜닉이다.",
+    "ItemType": "Normal",
+    "Grade": "Normal",
+    "MaxStackCount": 0,
+    "SellingPrice": 0,
+    "IconPath": "Armor/RoyalTunic"
+  },
+  {
+    "Id": "Item_BattleguardArmor",
+    "Name": "경비대부츠",
+    "Description": "경비대원의 부츠이다.",
+    "ItemType": "Normal",
+    "Grade": "Normal",
+    "MaxStackCount": 0,
+    "SellingPrice": 0,
+    "IconPath": "Boots/BattleguardArmor"
+  },
+  {
+    "Id": "Item_HunterBow",
+    "Name": "사냥꾼의활",
+    "Description": "어느 사냥꾼이 쓰던 활이다.",
+    "ItemType": "Normal",
+    "Grade": "Normal",
+    "MaxStackCount": 0,
+    "SellingPrice": 0,
+    "IconPath": "Bow/HunterBow"
+  },
+  {
+    "Id": "Item_ScoutHelm",
+    "Name": "수색대의투구",
+    "Description": "어느 수색대원의 투구이다.",
+    "ItemType": "Normal",
+    "Grade": "Normal",
+    "MaxStackCount": 0,
+    "SellingPrice": 0,
+    "IconPath": "Helmet/ScoutHelm"
+  },
+  {
+    "Id": "Item_TwoHandedWoodenMace",
+    "Name": "나무대형망치",
+    "Description": "나무로 된 대형망치이다.",
+    "ItemType": "Normal",
+    "Grade": "Normal",
+    "MaxStackCount": 0,
+    "SellingPrice": 0,
+    "IconPath": "MeleeWeapon2H/TwoHandedWoodenMace"
+  },
+  {
+    "Id": "Item_OldPoleaxe",
+    "Name": "녹슨도끼",
+    "Description": "관리를 안해 녹슨 도끼이다.",
+    "ItemType": "Normal",
+    "Grade": "Normal",
+    "MaxStackCount": 0,
+    "SellingPrice": 0,
+    "IconPath": "MeleeWeapon2H/OldPoleaxe"
+  },
+  {
+    "Id": "Item_GoldenRing",
+    "Name": "황금반지",
+    "Description": "순금으로 된 황금반지이다.",
+    "ItemType": "Normal",
+    "Grade": "Normal",
+    "MaxStackCount": 0,
+    "SellingPrice": 0,
+    "IconPath": "Ring/GoldenRing"
   }
 ]

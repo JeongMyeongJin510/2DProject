@@ -18,21 +18,27 @@ public class MJ2DBoyAnimController : MonoBehaviour
 
     public void SetAnimState(AnimState newState)
     {
+        if (newState == AnimState.Idle && _curState == AnimState.Idle)
+        {
+            return;
+        }
+
+
         _curState = newState;
-        ResetAllAnimParameters();
 
         switch (_curState)
         {
             case AnimState.Idle:
+                ResetAllAnimParameters();
                 break;
             case AnimState.Walk:
                 Animator_2DPlayer.SetBool("IsWalk", true);
                 break;
             case AnimState.Jump:
-                Animator_2DPlayer.SetBool("IsJump", true);
+                Animator_2DPlayer.SetTrigger("IsJump");
                 break;
             case AnimState.Atk:
-                Animator_2DPlayer.SetBool("IsAtk", true);
+                Animator_2DPlayer.SetTrigger("IsAtk");
                 break;
 
             default:
@@ -45,9 +51,7 @@ public class MJ2DBoyAnimController : MonoBehaviour
     private void ResetAllAnimParameters()
     {
         Animator_2DPlayer.SetBool("IsWalk", false);
-        Animator_2DPlayer.SetBool("IsJump", false);
-        Animator_2DPlayer.SetBool("IsAtk", false);
-
+        
 
     }
 }

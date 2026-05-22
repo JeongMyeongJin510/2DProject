@@ -29,23 +29,27 @@ public class MiniPJ_MainUI : DaniTechUIBase
 
     public void OnClick_UseNormalAttack()
     {
-        DaniTechGameManager.Inst.LocalPlayer.UseNormalAttack();
+        var localPlayer = DaniTechGameManager.Inst.GetLocalPlayer();
+        localPlayer.UseNormalAttack();
         Debug.LogWarning("평타");
     }
 
     public void OnClick_UseFirstSkill()
     {
-        DaniTechGameManager.Inst.LocalPlayer.UseFirstSkill();
+        var localPlayer = DaniTechGameManager.Inst.GetLocalPlayer();
+        localPlayer.UseFirstSkill();
     }
 
     public void OnClick_UseSecondSkill()
     {
-        DaniTechGameManager.Inst.LocalPlayer.UseSecondSkill();
+        var localPlayer = DaniTechGameManager.Inst.GetLocalPlayer();
+        localPlayer.UseSecondSkill();
     }
 
     public void OnClick_UseThirdSkill()
     {
-        DaniTechGameManager.Inst.LocalPlayer.UseThirdSkill();
+        var localPlayer = DaniTechGameManager.Inst.GetLocalPlayer();
+        localPlayer.UseThirdSkill();
     }
 
     public void OnClick_OpenGameBook()
@@ -54,6 +58,7 @@ public class MiniPJ_MainUI : DaniTechUIBase
     }
     public void OnClick_GameClose()
     {
+        Application.Quit();
         Debug.LogWarning("눌러짐");
     }
 

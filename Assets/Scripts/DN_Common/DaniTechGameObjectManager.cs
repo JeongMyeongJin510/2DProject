@@ -18,12 +18,32 @@ public class DaniTechGameObjectManager : MonoBehaviour
     private Dictionary<int, DaniTech_2DFieldObject> _fieldObjectContainer = new Dictionary<int, DaniTech_2DFieldObject>();
     private Dictionary<int, GameMonster> _monsterObjectContainer = new Dictionary<int, GameMonster>();
 
+    private MJ_2DPlayer _localPlayer;
+
 
 
     private void Awake()
     {
         Inst = this;
     }
+
+    public void RegisterLocalPlayer(MJ_2DPlayer localPlayer)
+    {
+        _localPlayer = localPlayer;
+    }
+
+    public MJ_2DPlayer GetLocalPlayer()
+    {
+        if (_localPlayer == null)
+        {
+            Debug.LogError("등록된 플레이어가 없는데 참조하려고 시도하고 있습니다");
+            return null;
+        }
+
+        // 우리가 배웟던 원시적인 Get함수
+        return _localPlayer;
+    }
+
 
     public void RequestSpawnEnemy()
     {
@@ -124,6 +144,17 @@ public class DaniTechGameObjectManager : MonoBehaviour
 
     }
 
+    public GameMonster GetMonsterObjectByInstanceId(int monsterInstanceId)
+    {
+        if (_monsterObjectContainer.ContainsKey(monsterInstanceId) == false)
+        {
+            Debug.LogError($"{monsterInstanceId} 찾으려는 몬스터가 유효하지 않습니다");
+            return null;
+        }
+        
+        //왜 딕셔너리 값 찾을때 _자료구조["키"]; 
+        return _monsterObjectContainer[monsterInstanceId];
+    }
 
 
     //[필드 오브젝트] ====================================================================================================

@@ -49,6 +49,11 @@ public class GameMonster : MonsterBase
         StartCoroutine(CheckAndUseSkill());
     }
     
+    public int GetMonsterInstanceId() // 유니티에 GetInstanceID랑 헷갈리지 않게 함수명을 복잡하게 쓴다.
+    {
+        return _instanceId;
+    }
+
     private int GetFianlNormalAtkDamage(int baseAtk, float normalAtkMultiple)
     {
         return GetFinalSkillDamage(baseAtk, normalAtkMultiple);
@@ -91,7 +96,7 @@ public class GameMonster : MonsterBase
         SpriteRenderer_Monster.flipX = (x < 0);
     }
 
-    private void UesSkill()
+    public void UesSkill()
     {
         var gObj = Instantiate(Prefab_MonsterSkillObject, DaniTechGameObjectManager.Inst.transform);
         if (gObj == null) return;
@@ -101,10 +106,36 @@ public class GameMonster : MonsterBase
 
         float skillMultiple = _monsterData.SkillAtkMultipleList.Count > 0 ? _monsterData.SkillAtkMultipleList[0] : 0;
         int finalSkillDamage = GetFinalSkillDamage(_baseAtk, skillMultiple);
-        skillProjectileComponent.InitSkillObject(_instanceId, _lookRight, this.transform.position, finalSkillDamage);
+        skillProjectileComponent.InitSkillObject(_instanceId, _lookRight, this.transform.position, finalSkillDamage, tag, OnSkillCollision);
     }
 
+    // 몬스터가 소환한 투사체의 충돌이 발생 했을 때 응답이 온다.
+    private void OnSkillCollision(int colliedObjectInstanceId, int damage)
+    {
+        if (colliedObjectInstanceId == 0)  // 0이면 플레이어라는 규칙이 있으므로
+        {
+            var player = DaniTechGameObjectManager.Inst.GetLocalPlayer();
 
+            // 스킬이 충돌한 시점에서 다시 한번 데미지를 계산해도 된다 - 기획적인 요소
+            //float skillMultiple = _monsterData.SkillAtkMultipleList.Count > 0 ? _monsterData.SkillAtkMultipleList[0] : 0;
+            //int finalSkillDamage = GetFinalSkillDamage(_baseAtk, skillMultiple);
 
+            player.TakeDamage(damage);
+        }
+
+    }
+
+    public void TakeDamage(int playerDamage)
+    {
+        _baseHp -= playerDamage;
+
+        // 피격 이펙트 같은거 활성화
+        //SpriteRenderer_Damage.gameObject.SerActive(true);
+
+        if (_baseHp < 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
 }

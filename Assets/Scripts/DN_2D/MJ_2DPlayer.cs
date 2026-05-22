@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework.Constraints;
 using System.Collections;
-using UnityEditor.AddressableAssets.BuildReportVisualizer;
 using UnityEngine;
 
 // +) 어떤 컴포넌트가 필수로 필요하다는 것을 강제할 수 있다
@@ -23,6 +22,11 @@ public class MJ_2DPlayer : MonoBehaviour
     [SerializeField] private Collider2D Collider_PlayerNormalAttack;
     [SerializeField] private GameObject prefab_SkillProjectile;
     [SerializeField] private Transform Transform_SkillProjectileRoot;
+
+    [Header("전투 관련 정보")]
+    [SerializeField] private int _playerHp = 1000;
+    [SerializeField] private int _playerBaseAtk = 100;
+
 
 
     // 우선 직접 들고 있다가 추후에 UI매니저한테 요청하도록 개선해볼 것
@@ -55,8 +59,11 @@ public class MJ_2DPlayer : MonoBehaviour
         // 2D 캐릭터가 물리 충돌 시 회전해서 넘어지는 것 방지
         _rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
         Collider_PlayerNormalAttack.gameObject.SetActive(false);
+    }
 
-
+    private void Start()
+    {
+        DaniTechGameObjectManager.Inst.RegisterLocalPlayer(this);
     }
 
     void Update()
@@ -256,8 +263,24 @@ public class MJ_2DPlayer : MonoBehaviour
         var skillProjectileComponent = gObj.GetComponent<SkillProjectile>();
         if (skillProjectileComponent == null) return;
 
-        skillProjectileComponent.InitSkillObject(0, _lookRight, this.transform.position, 500);
+        var tag = this.gameObject.tag;
+        skillProjectileComponent.InitSkillObject(0, _lookRight, this.transform.position, 500, tag, OnMonsterCollied);
+    }
 
+    private void OnMonsterCollied(int monsterInstanceId, int skillDamage)
+    {
+        //게임 오브젝트 매니저는 모든 몬스터를 관리한다
+        // 그 자료구조는 Dictionary로 key - instanceId다
+        // 몬스터를 게임오브젝트 매니저를 통해 받아올 수 있다.
+
+        // 몬스터때도 구현했던 2번 방식) 플레이어한테 스킬이 충돌정보를 알려주기만 하고
+        // 실제 몬스터와의 상호작용은 플레이어가 주도권을 갖고 한다
+        var monsterComponent = DaniTechGameObjectManager.Inst.GetMonsterObjectByInstanceId(monsterInstanceId);
+        if (monsterComponent == null) return;
+
+        Debug.LogWarning($"플레이어가 {monsterInstanceId}에 데미지 {skillDamage} 만큼 부여");
+        monsterComponent.TakeDamage(skillDamage);
+        monsterComponent.UesSkill();
     }
 
     IEnumerator CoStartNormalAttack()
@@ -303,6 +326,27 @@ public class MJ_2DPlayer : MonoBehaviour
             }
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+
+        _playerHp -= damage;
+        Debug.Log($"{_playerHp}");
+
+
+        if (_playerHp < 0)
+        {
+            PlayerDie();
+        }
+
+    }
+
+    public void PlayerDie()
+    {
+        //bool _isAlive = false;
+    }
+
+
 
     private void OnDrawGizmos()
     {

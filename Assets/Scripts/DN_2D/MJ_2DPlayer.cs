@@ -26,6 +26,7 @@ public class MJ_2DPlayer : MonoBehaviour
     [Header("전투 관련 정보")]
     [SerializeField] private int _playerHp = 1000;
     [SerializeField] private int _playerBaseAtk = 100;
+    [SerializeField] private int _playerBaseDef = 10;
 
 
 
@@ -46,7 +47,7 @@ public class MJ_2DPlayer : MonoBehaviour
 
     public enum ViewType { SideView, TopDown, Isometric }
     public ViewType _currentView = ViewType.SideView;
-    public Vector2 _lookDirection = Vector2.right; //플레이어가 바라보고 있는 방향
+    public Vector2 _lookDirection = Vector2.up; //플레이어가 바라보고 있는 방향
 
     private Vector2 _lastOverlapOffset;
     private float _lastOverlapRadius;
@@ -346,6 +347,20 @@ public class MJ_2DPlayer : MonoBehaviour
         //bool _isAlive = false;
     }
 
+    public int GetPlayerHp()
+    {
+        return _playerHp;
+    }
+
+    public int GetPlayerBaseAtk()
+    {
+        return _playerBaseAtk;
+    }
+
+    public int GetPlayerBaseDef()
+    {
+        return _playerBaseDef;
+    }
 
 
     private void OnDrawGizmos()

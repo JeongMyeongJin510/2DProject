@@ -138,4 +138,19 @@ public class GameMonster : MonsterBase
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       Debug.LogWarning($"대상 이름: {collision.gameObject.name}, 태그명: {collision.gameObject.tag}");
+
+        if (collision.gameObject.CompareTag("Player") == true)
+        {
+            Debug.LogWarning("플레이어 감지 완료!");
+
+            if (DaniTechGameObjectManager.Inst != null)
+            {
+                DaniTechGameObjectManager.Inst.InterCeptMonsterCollision(_instanceId, _dataId);
+            }
+        }
+    }
+
 }

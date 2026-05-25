@@ -206,4 +206,27 @@ public class DaniTechGameObjectManager : MonoBehaviour
 
         return _fieldObjectContainer[fieldObjectInstanceId];
     } 
+
+    public void InterCeptMonsterCollision(int monsterInstanceId, string monsterDataId)
+    {
+        if (DaniTechUIManager.Instance != null)
+        {
+            DaniTechUIManager.Instance.OpenBattleMainUI(monsterInstanceId, monsterDataId);
+        }
+    }
+
+    public void InterceptPortalClear()
+    {
+        Debug.LogWarning("포탈 도달 신호 감지. 게임 클리어 정산을 시작합니다.");
+
+        if (DaniTechUIManager.Instance != null)
+        {
+            DaniTechUIManager.Instance.OpenSimplePopup("★ GAME CLEAR ★\n축하합니다! 포탈을 통해 무사히 탈출에 성공하셨습니다.");
+        }
+
+        if (_localPlayer != null)
+        {
+            _localPlayer.enabled = false;
+        }
+    }
 }

@@ -36,14 +36,35 @@ public class BattleSlotMachineUI : DaniTechUIBase
             return;
         }
 
+        List<int> turnResultIndices = new List<int>();
+
         foreach (var slot in _slotList)
         {
             int ramdomIndex = Random.Range(0, Sprite_RamdomIcons.Length);
 
             var ramdomSprite = Sprite_RamdomIcons[ramdomIndex];
             slot.SetWeaponIcon(ramdomSprite);
+
+            turnResultIndices.Add(ramdomIndex);
+        }
+
+        SendResultToBattleMainUI(turnResultIndices);
+    }
+
+    private void SendResultToBattleMainUI(List<int> resultIndices)
+    {
+        var battleMainUI = GetComponentInParent<BattleMainUI>();
+
+        if (battleMainUI != null)
+        { 
+            battleMainUI.ReceiveSlotMachineResult(resultIndices);
+        }
+        else
+        {
+            Debug.LogWarning("[슬롯머신 UI] 부모 오브젝트에서 'BattleMainUI' 스크립트를 찾을 수 없습니다.");
         }
     }
+
 
     //private void CreatItemSlot()
     //{

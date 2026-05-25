@@ -23,7 +23,8 @@ public enum DaniTechUIType
     Popup_GameOption,
     LobbyUI,
     MiniPJ_MainUI,
-    GameBookUI
+    GameBookUI,
+    BattleMainUI
 }
 
 public static class DaniTechUIManagerExtension
@@ -130,14 +131,19 @@ public static class DaniTechUIManagerExtension
         }
     }
 
-    //public static void OpenMainUI(this DaniTechUIManager uiManager) // 2D포폴때 수정 후 사용 예정
-    //{
-    //    var uiBase = uiManager.OpenUI(DaniTechUIRootType.VeryFrontUI, DaniTechUIType.DNLoadingUI);
-    //    if (uiBase == null)
-    //    {
-    //        Debug.LogWarning($"UI가 생성되지 않았습니다");
-    //        return;
-    //    }
-    //}
+    public static void OpenBattleMainUI(this DaniTechUIManager uiManager, int monsterInstanceId, string monsterDataId) // 2D포폴때 수정 후 사용 예정
+    {
+        var uiBase = uiManager.OpenContentUI(DaniTechUIType.BattleMainUI);
+        if (uiBase == null)
+        {
+            Debug.LogWarning($"전투 UI가 생성되지 않았습니다");
+            return;
+        }
+
+        if (uiBase is BattleMainUI battleMainUI)
+        {
+            battleMainUI.InitBattleWindow(monsterInstanceId, monsterDataId);
+        }
+    }
 }
 

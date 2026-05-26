@@ -219,6 +219,7 @@ public class BattleMainUI : DaniTechUIBase
             DaniTechGameObjectManager.Inst.RequestDestroyEntityObject(_targetMonsterInstanceId);
         }
         this.gameObject.SetActive(false);
+
     }
 
 

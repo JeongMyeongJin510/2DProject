@@ -23,9 +23,12 @@ public class GameMonster : MonsterBase
     public int _baseAtk;
     public bool _isAlive = true;
     private bool _lookRight = true;
+    private int _maxHp;
 
     private Vector3 _moveDirection;
 
+    private event Action<int, int> _onHpChanged;
+    private event Action<int, int> _onMpChanged;
 
     private void OnDisable()
     {
@@ -43,9 +46,11 @@ public class GameMonster : MonsterBase
         {
             _monsterData = monsterData;
             _baseHp = _monsterData.BaseHp;
+            _maxHp = _baseHp;
             _baseAtk = _monsterData.BaseAtk;
         }
 
+        DaniTechUIManager.Instance.AddHudSlot(instanceId, this.gameObject.transform);
         StartCoroutine(CheckAndUseSkill());
     }
     
@@ -132,11 +137,35 @@ public class GameMonster : MonsterBase
         // 피격 이펙트 같은거 활성화
         //SpriteRenderer_Damage.gameObject.SerActive(true);
 
+        InvokeStatChangedEvent();
+
         if (_baseHp < 0)
         {
             Destroy(this.gameObject);
+            DaniTechUIManager.Instance.RemoveHudSlot(_instanceId);
+
         }
     }
+
+    public void BindOnStatChangedEvent(Action<int, int> hpChangeCallback, Action<int, int> mpChangecallback)
+    {
+        _onHpChanged += hpChangeCallback;
+        _onMpChanged += mpChangecallback;
+    }
+
+    public void ResetStatChangedEvent()
+    {
+        _onHpChanged = null;
+        _onMpChanged = null;
+    }
+
+    private void InvokeStatChangedEvent()
+    {
+        // 우선 HP든 MP든 하나라도 바뀌면 다 호출해준다.
+        _onHpChanged?.Invoke(_baseHp, _maxHp);
+        //_onMpChanged?.Invoke(_playerMp);
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

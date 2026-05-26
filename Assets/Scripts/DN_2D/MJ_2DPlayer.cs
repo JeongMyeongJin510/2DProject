@@ -1,4 +1,5 @@
-﻿using NUnit.Framework.Constraints;
+﻿               using NUnit.Framework.Constraints;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ public class MJ_2DPlayer : MonoBehaviour
     [SerializeField] private Transform Transform_SkillProjectileRoot;
 
     [Header("전투 관련 정보")]
+    [SerializeField] private int _maxHp;
     [SerializeField] private int _playerHp = 1000;
     [SerializeField] private int _playerBaseAtk = 100;
     [SerializeField] private int _playerBaseDef = 10;
@@ -53,6 +55,12 @@ public class MJ_2DPlayer : MonoBehaviour
     private float _lastOverlapRadius;
     private bool _isOverlapSkillVisible = false;
 
+
+
+    private event Action<int, int> _onHpChanged;
+    private event Action<int, int> _onMpChanged;
+
+
     void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -60,11 +68,15 @@ public class MJ_2DPlayer : MonoBehaviour
         // 2D 캐릭터가 물리 충돌 시 회전해서 넘어지는 것 방지
         _rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
         Collider_PlayerNormalAttack.gameObject.SetActive(false);
+
+        _playerHp = 1000;
+        _maxHp = _playerHp;
     }
 
     private void Start()
     {
         DaniTechGameObjectManager.Inst.RegisterLocalPlayer(this);
+        DaniTechUIManager.Instance.AddHudSlot(0, this.gameObject.transform);
     }
 
     void Update()
@@ -338,6 +350,7 @@ public class MJ_2DPlayer : MonoBehaviour
         if (_playerHp < 0)
         {
             PlayerDie();
+            DaniTechUIManager.Instance.RemoveHudSlot(0);
         }
 
     }
@@ -346,6 +359,26 @@ public class MJ_2DPlayer : MonoBehaviour
     {
         //bool _isAlive = false;
     }
+
+    public void BindOnStatChangedEvent(Action<int, int> hpChangeCallback, Action<int, int> mpChangecallback)
+    {
+        _onHpChanged += hpChangeCallback;
+        _onMpChanged += mpChangecallback;
+    }
+
+    public void ResetStatChangedEvent()
+    {
+        _onHpChanged = null;
+        _onMpChanged = null;
+    }
+
+    private void InvokeStatChangedEvent()
+    {
+        // 우선 HP든 MP든 하나라도 바뀌면 다 호출해준다.
+        _onHpChanged?.Invoke(_playerHp, _maxHp);
+        //_onMpChanged?.Invoke(_playerMp);
+    }
+
 
     public int GetPlayerHp()
     {

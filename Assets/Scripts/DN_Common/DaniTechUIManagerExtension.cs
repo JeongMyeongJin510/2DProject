@@ -24,7 +24,8 @@ public enum DaniTechUIType
     LobbyUI,
     MiniPJ_MainUI,
     GameBookUI,
-    BattleMainUI
+    BattleMainUI,
+    HudUI
 }
 
 public static class DaniTechUIManagerExtension
@@ -43,7 +44,9 @@ public static class DaniTechUIManagerExtension
     {
         uiManager.OpenLoadingUI();
         uiManager.OpenContentUI(DaniTechUIType.LobbyUI);
+        uiManager.OpenUI(DaniTechUIRootType.MainUI, DaniTechUIType.HudUI);
         uiManager.OpenUI(DaniTechUIRootType.MainUI, DaniTechUIType.MiniPJ_MainUI);
+
         // 게임 로비 UI를 여기서 오픈해주자 -> uiManager.
         // MainUI도
     }
@@ -131,7 +134,7 @@ public static class DaniTechUIManagerExtension
         }
     }
 
-    public static void OpenBattleMainUI(this DaniTechUIManager uiManager, int monsterInstanceId, string monsterDataId) // 2D포폴때 수정 후 사용 예정
+    public static void OpenBattleMainUI(this DaniTechUIManager uiManager, int monsterInstanceId, string monsterDataId) 
     {
         var uiBase = uiManager.OpenContentUI(DaniTechUIType.BattleMainUI);
         if (uiBase == null)
@@ -143,6 +146,42 @@ public static class DaniTechUIManagerExtension
         if (uiBase is BattleMainUI battleMainUI)
         {
             battleMainUI.InitBattleWindow(monsterInstanceId, monsterDataId);
+        }
+    }
+
+    public static void AddHudSlot(this DaniTechUIManager uiManager, int instanceId, Transform targetTransform)
+    {
+        var uiBase = uiManager.GetOpenedUI(DaniTechUIRootType.MainUI, DaniTechUIType.HudUI);
+        if (uiBase == null) return;
+
+        if (uiBase is HudUI hubUi)
+        {
+            // 그 대상이 생성되면 호출
+            // 몬스터 동적생성이 선행적으로 구조가 잘 잡혀있으므로 그걸 이용할 수 있다.
+
+            hubUi.AddHudSlot(instanceId, targetTransform);
+
+        }
+
+
+    }
+
+    public static void RemoveHudSlot(this DaniTechUIManager uiManager, int instanceId)
+    {
+        // 그 대상이 죽었을 때 호출
+
+        var uiBase = uiManager.GetOpenedUI(DaniTechUIRootType.MainUI, DaniTechUIType.HudUI);
+        if (uiBase == null) return;
+
+
+        // 기존에 GetComponent를 하던 부분이 클래스 형변환을 해도 되도록 개선되었다 (UIBase를 상속받기 때문)
+        if (uiBase is HudUI hubUi)
+        {
+            // 그 대상이 생성되면 호출
+            // 몬스터 동적생성이 선행적으로 구조가 잘 잡혀있으므로 그걸 이용할 수 있다.
+
+            hubUi.RemoveHubSlost(instanceId);
+
         }
     }
 }

@@ -9,6 +9,9 @@ public class DaniTechUIButton : MonoBehaviour
     [SerializeField] private Image Image_Base;
     [SerializeField] private Image Image_Select;
 
+    private bool _isSlotMenualUnbindEvent;
+
+
     private void Awake()
     {
         // 1-2) 이 오브젝트가 생성될 때, 한번 컴포넌트를 찾아서 캐싱하자
@@ -16,14 +19,12 @@ public class DaniTechUIButton : MonoBehaviour
         SetDefaultUI();
     }
 
-    private void OnEnable()
-    {
-        BindOnClickButtonEvent(OnClickSetSelectUI);
-    }
-
     private void OnDisable()
     {
-        Button_Base.onClick.RemoveAllListeners();
+        if (_isSlotMenualUnbindEvent == false)
+        {
+            Button_Base.onClick.RemoveAllListeners();
+        }
     }
 
 
@@ -51,19 +52,19 @@ public class DaniTechUIButton : MonoBehaviour
         }
     }
 
-    public void BindOnClickButtonEvent(Action onClickCallback)
+    public void BindOnClickButtonEvent(Action onClickCallback, bool isMenualUnbindEvent = false)
     {
         if(Button_Base == null) return;
 
-        Button_Base.onClick.AddListener(new UnityEngine.Events.UnityAction(onClickCallback));
-
+        Button_Base.onClick.AddListener(onClickCallback.Invoke);
+        _isSlotMenualUnbindEvent = isMenualUnbindEvent;
     }
 
-    public void UnBindOnClickButtonEvent(Action onClickCallback)
+    public void UnBindAllOnClickButtonEvent()
     {
         if (Button_Base == null) return;
 
-        Button_Base.onClick.RemoveListener(new UnityEngine.Events.UnityAction(onClickCallback));
+        Button_Base.onClick.RemoveAllListeners();
     }
 
     public void ChangeButtonText(string buttonStr)
@@ -74,12 +75,5 @@ public class DaniTechUIButton : MonoBehaviour
         Text_Base.text = buttonStr;
     }
 
-    private void OnClickSetSelectUI()
-    {
-        if(Image_Select != null)
-        {
-            bool currentActive = Image_Select.gameObject.activeSelf;
-            Image_Select.gameObject.SetActive(!currentActive);
-        }
-    }
+   
 }

@@ -141,10 +141,17 @@ public class GameMonster : MonsterBase
 
         if (_baseHp < 0)
         {
-            Destroy(this.gameObject);
-            DaniTechUIManager.Instance.RemoveHudSlot(_instanceId);
+            OnBattleUnitDie();
 
         }
+    }
+
+    private void OnBattleUnitDie()
+    {
+        DaniTechUIManager.Instance.RemoveHudSlot(_instanceId);
+        ResetStatChangedEvent();
+        Destroy(this.gameObject);
+
     }
 
     public void BindOnStatChangedEvent(Action<int, int> hpChangeCallback, Action<int, int> mpChangecallback)

@@ -79,6 +79,11 @@ public class MJ_2DPlayer : MonoBehaviour
         DaniTechUIManager.Instance.AddHudSlot(0, this.gameObject.transform);
     }
 
+    private void OnDisable()
+    {
+        ResetStatChangedEvent();
+    }
+
     void Update()
     {
         // 1. 입력 받기 (Update에서 수행)
@@ -408,5 +413,16 @@ public class MJ_2DPlayer : MonoBehaviour
         Vector2 adjustedDir = GetAdjustedDirection(_lookDirection);
         Vector3 center = transform.position + new Vector3(adjustedDir.x * _lastOverlapOffset.x, adjustedDir.y * _lastOverlapOffset.y, 0);
         Gizmos.DrawWireSphere(center, _lastOverlapRadius);
+    }
+
+    public void AddHp(int hp)
+    {
+        _playerHp += hp;
+        InvokeStatChangedEvent();
+    }
+
+    public void AddAtk(int atk)
+    {
+        _playerBaseAtk += atk;
     }
 }

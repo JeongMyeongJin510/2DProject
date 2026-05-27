@@ -13,9 +13,10 @@ public class DaniTech_SampleInventorySlotUI : MonoBehaviour
     [SerializeField] private Image Image_Frame;
     [SerializeField] private Image Image_Selected;
 
-    private event Action<int> OnSelectEvent;
+    private event Action<long> OnSelectEvent;
 
-    public int SlotInstanceId { get; private set; }
+    public long SlotItemUniqueId { get; private set; }
+    public bool IsUsableItem { get; private set; }
 
     private void OnEnable()
     {
@@ -39,6 +40,7 @@ public class DaniTech_SampleInventorySlotUI : MonoBehaviour
             return;
         }
 
+        IsUsableItem = (string.IsNullOrEmpty(itemData.UseItemType) == false);
         // + Addressable을 적용하면서 비동기로 바뀌었다
         //DaniTechResourceManager.Inst.LoadSprite(iconPath, (sprite) => {
         //    Image_Icon.sprite = sprite;
@@ -62,9 +64,9 @@ public class DaniTech_SampleInventorySlotUI : MonoBehaviour
         OnSelectEvent = null;
     }
 
-    public void InitSlot(int slotInstanceId, string itemDataId, int itemStackCount)
+    public void InitSlot(long slotItemUniqueId, string itemDataId, int itemStackCount)
     {
-        SlotInstanceId = slotInstanceId;
+        SlotItemUniqueId = slotItemUniqueId;
         SetIcon(itemDataId, itemStackCount);
         // Text_StackCount.text = slotInstanceId.ToString();
     }
@@ -72,14 +74,14 @@ public class DaniTech_SampleInventorySlotUI : MonoBehaviour
     public void OnClick_SelectItem()
     {
         // 부모한테 알려주자
-        OnSelectEvent?.Invoke(SlotInstanceId);
+        OnSelectEvent?.Invoke(SlotItemUniqueId);
 
 
-        Debug.Log($"{SlotInstanceId}눌러졌다");
+        Debug.Log($"{SlotItemUniqueId}눌러졌다");
         // 나중에 툴팁, 팝업 다 여기서 띄워주면 된다
     }
 
-    public void BindSlotSelectEvent(Action<int> onSelectEvent)
+    public void BindSlotSelectEvent(Action<long> onSelectEvent)
     {
         // 얘는 부모 하나만 콜백이벤트 등록하면 된다.
         OnSelectEvent = onSelectEvent;

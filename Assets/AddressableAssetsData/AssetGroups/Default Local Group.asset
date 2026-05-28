@@ -116,7 +116,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b907e03476a6bf142873d4458162e1ac
-    m_Address: Texture2D/Image_GameOver
+    m_Address: Texture2D/GameOver_Image_1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -25,7 +25,8 @@ public enum DaniTechUIType
     MiniPJ_MainUI,
     GameBookUI,
     BattleMainUI,
-    HudUI
+    HudUI,
+    GameOverUI
 }
 
 public static class DaniTechUIManagerExtension
@@ -154,6 +155,18 @@ public static class DaniTechUIManagerExtension
             battleMainUI.InitBattleWindow(monsterInstanceId, monsterDataId);
         }
     }
+
+    public static void OpenGameOverUI(this DaniTechUIManager uiManger)
+    {
+        var uiBase = uiManger.OpenContentUI(DaniTechUIType.GameOverUI);
+        if (uiBase == null)
+        {
+            Debug.LogWarning($"UI가 생성되지 않았습니다");
+            return;
+        }
+    }
+
+
 
     // Hud 사용할 경우 주석 해제
 

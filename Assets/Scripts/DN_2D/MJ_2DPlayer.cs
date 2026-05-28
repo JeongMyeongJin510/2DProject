@@ -76,7 +76,7 @@ public class MJ_2DPlayer : MonoBehaviour
     private void Start()
     {
         DaniTechGameObjectManager.Inst.RegisterLocalPlayer(this);
-        //DaniTechUIManager.Instance.AddHudSlot(0, this.gameObject.transform);//hud 사용 할 경우 주석 해제
+       // DaniTechUIManager.Instance.AddHudSlot(0, this.gameObject.transform);//hud 사용 할 경우 주석 해제
     }
 
     private void OnDisable()
@@ -174,19 +174,20 @@ public class MJ_2DPlayer : MonoBehaviour
         }
 
         // 6-2) 충돌한 몬스터의 정보를 받아오려고 시도해보자
-        var enemyComponent = collision.gameObject.GetComponent<DaniTech_2DEnemy>();
-        if (enemyComponent == null)
+        var monsterComponent = collision.gameObject.GetComponent<GameMonster>(); //DaniTech_2DEnemy
+        if (monsterComponent == null)
         {
             Debug.Log($"충돌한 적 객체에서 컴포넌트를 찾을 수 없습니다 : {gameObject.name}");
             return;
         }
 
         // 6-3) 충돌된 오브젝트를 플레이어가 직접 제거하는게 아니라, Id로 게임오브젝트매니저한테 삭제를 요청한다
-        DaniTechGameObjectManager.Inst.RequestDestroyEntityObject(enemyComponent.EntityInstancId);
+        //DaniTechGameObjectManager.Inst.RequestDestroyEntityObject(enemyComponent.EntityInstancId);
+        DaniTechGameObjectManager.Inst.InterCeptMonsterCollision(monsterComponent.GetMonsterInstanceId(), monsterComponent._dataId); // 5.28추가
+
 
         // 6-4) 피그미를 잡으면 스코어를 올려주자!
         AddGameScore();
-
         
     }
 
@@ -297,8 +298,8 @@ public class MJ_2DPlayer : MonoBehaviour
         if (monsterComponent == null) return;
 
         Debug.LogWarning($"플레이어가 {monsterInstanceId}에 데미지 {skillDamage} 만큼 부여");
-        monsterComponent.TakeDamage(skillDamage);
-        monsterComponent.UesSkill();
+        //monsterComponent.TakeDamage(skillDamage); // 스킬 사용 구간
+        //monsterComponent.UesSkill();
     }
 
     IEnumerator CoStartNormalAttack()

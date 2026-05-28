@@ -136,7 +136,13 @@ public class DaniTechGameObjectManager : MonoBehaviour
         int generatedInstanceId = _objectInstanceKeyGenerator;
 
         var monsterComponent = createdObject.GetComponent<GameMonster>();
-        if (monsterComponent == null) return;
+        if (monsterComponent == null)
+        {
+            Debug.LogError("몬스터 컴포넌트 찾을수 없음");
+            return;
+
+        }
+
 
         _monsterObjectContainer.Add(generatedInstanceId, monsterComponent);
 
@@ -241,11 +247,15 @@ public class DaniTechGameObjectManager : MonoBehaviour
             return;
         }
 
+        _isBattleActive = true;
+
         if (DaniTechUIManager.Instance != null)
         {
             DaniTechUIManager.Instance.OpenBattleMainUI(monsterInstanceId, monsterDataId);
         }
     }
+
+
 
     public void InterceptPortalClear()
     {

@@ -24,15 +24,21 @@ public class BattleMainUI : DaniTechUIBase
 
 
     [Header("실시간 런타임 변동 데이터")]
-    private int _targetMonsterInstanceId;
+    public int _targetMonsterInstanceId;
+
+    // 몬스터 전투 스텟
     private int _currentMonsterHp;
     private int _maxMonsterHp;
+    private int _monsterBaseAtk; // 몬스터 기본 공 (반격 사용 예정)
+
+    // 플레이어 전투 스텟
     private int _currentPlayerHp;
     private int _maxPlayerHp;
-
-
     private int _playerCurrentAtk;
     private int _playerCurrentDef;
+
+    // 전투 종료 중복 처리 방지
+    private bool _isBattleOver;
 
 
 
@@ -49,6 +55,7 @@ public class BattleMainUI : DaniTechUIBase
     public void InitBattleWindow(int monsterInstanceId, string monsterDataId)
     {
         _targetMonsterInstanceId = monsterInstanceId;
+        _isBattleOver = false;
 
         // 부딪힌 몬스터 컴포넌트 실체를 가져온다
         var monsterComponent = DaniTechGameObjectManager.Inst.GetMonsterObjectByInstanceId(monsterInstanceId);
@@ -56,8 +63,9 @@ public class BattleMainUI : DaniTechUIBase
         {
             _currentMonsterHp = monsterComponent._baseHp;
             _maxMonsterHp = monsterComponent._baseHp;
+            _monsterBaseAtk = monsterComponent._baseAtk;
 
-            var monsterSpriteRenderer = monsterComponent.GetComponent<SpriteRenderer>();
+            var monsterSpriteRenderer = monsterComponent.GetComponentInChildren<SpriteRenderer>();
 
             if (monsterSpriteRenderer != null && Image_MonsterImage != null)
             {
@@ -71,14 +79,11 @@ public class BattleMainUI : DaniTechUIBase
         {
             _maxPlayerHp = playerComponent.GetPlayerHp();
             _currentPlayerHp = playerComponent.GetPlayerHp();
-
-
             _playerCurrentAtk = playerComponent.GetPlayerBaseAtk();
             _playerCurrentDef = playerComponent.GetPlayerBaseDef();
         }
-
-
-
+        // 초기 UI 갱신
+        RefreshBattleStatsWindow();
     }
 
     //스핀 정산 시작 직전, 이전 턴의 증가 수치를 지우고 플레이어 본체의 원래 기본 체급 수치로 덮어씌워 리셋
@@ -96,6 +101,8 @@ public class BattleMainUI : DaniTechUIBase
     // 슬롯머신 스핀이 완료되었을 때 결과 번호 가방(9개)을 전송받아 연산
     public void ReceiveSlotMachineResult(List<int> resultIndices)
     {
+
+        if (_isBattleOver) return;
         if (resultIndices == null || resultIndices.Count < 9) return;
 
         ResetTurnStats();
@@ -108,12 +115,22 @@ public class BattleMainUI : DaniTechUIBase
 
         CheckLineMatchBingoBouns(resultIndices);
         ExecuteAutoAttackToMonster();
+
+        if (_currentMonsterHp > 0)
+        {
+            ExecuteMonsterCounterAttackToPlayer();
+        }
+
         RefreshBattleStatsWindow();
 
-
+        //전투 종료
         if (_currentMonsterHp <= 0)
         {
             ProcessBattleVictory();
+        }
+        else if (_currentPlayerHp <= 0)
+        {
+            ProcessBattleDefeat();
         }
     }
     
@@ -173,6 +190,13 @@ public class BattleMainUI : DaniTechUIBase
         _currentMonsterHp = Mathf.Max(0, _currentMonsterHp - _playerCurrentAtk);
     }
 
+    // 몬스터 반격 기능 (살아있을 경우만)
+    private void ExecuteMonsterCounterAttackToPlayer()
+    {
+        int reducedDamage = Mathf.Max(1, _monsterBaseAtk - _playerCurrentDef);
+        _currentPlayerHp = Mathf.Max(0, _currentPlayerHp - reducedDamage);
+    } 
+
     private void RefreshBattleStatsWindow()
     {
         //플레이어 공격력 업데이트
@@ -214,12 +238,32 @@ public class BattleMainUI : DaniTechUIBase
 
     private void ProcessBattleVictory()
     {
+        _isBattleOver = true;
+
         if (DaniTechGameObjectManager.Inst != null)
         {
-            DaniTechGameObjectManager.Inst.RequestDestroyEntityObject(_targetMonsterInstanceId);
-        }
-        this.gameObject.SetActive(false);
+            DaniTechGameObjectManager.Inst.RequestDestroyMonsterObject(_targetMonsterInstanceId);
+            DaniTechGameObjectManager.Inst.FinishBattleState();
 
+            DaniTechUIManager.Instance.CloseContentUI(DaniTechUIType.BattleMainUI); //5.28
+        }
+        //this.gameObject.SetActive(false);
+
+
+    }
+
+    private void ProcessBattleDefeat()
+    {
+        _isBattleOver = true;
+
+        //플레이어가 죽었으니 전투 창 닫기 // TODO 플레이어 사망 시 게임종료 추가해야함
+        Debug.LogWarning("패배");
+        //this.gameObject.SetActive(false);
+        DaniTechUIManager.Instance.CloseContentUI(DaniTechUIType.BattleMainUI); //5.28
+
+
+        //로비 복귀
+        DaniTechUIManager.Instance.OpenContentUI(DaniTechUIType.LobbyUI);
     }
 
 

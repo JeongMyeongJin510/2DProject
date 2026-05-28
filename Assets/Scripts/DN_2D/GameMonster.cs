@@ -8,7 +8,7 @@ public class GameMonster : MonsterBase
 {
     [Header("몬스터 프리팹에서 미리 세팅할 데이터")]
     public float SkillCooltime;
-    public GameObject Prefab_MonsterSkillObject;
+    // public GameObject Prefab_MonsterSkillObject; // 스킬 사용 구간
     [SerializeField] private SpriteRenderer SpriteRenderer_Monster;
 
 
@@ -33,6 +33,7 @@ public class GameMonster : MonsterBase
     private void OnDisable()
     {
         _isAlive = false;
+        Debug.LogError($"OnDisable 호출됨 instanceId: {_instanceId}");
     }
 
     public void InitMonster(int instanceId, string dataId)
@@ -51,9 +52,9 @@ public class GameMonster : MonsterBase
         }
 
         //DaniTechUIManager.Instance.AddHudSlot(instanceId, this.gameObject.transform);//hud 사용 할 경우 주석 해제
-        StartCoroutine(CheckAndUseSkill());
+        //StartCoroutine(CheckAndUseSkill());  // 스킬 사용 구간
     }
-    
+
     public int GetMonsterInstanceId() // 유니티에 GetInstanceID랑 헷갈리지 않게 함수명을 복잡하게 쓴다.
     {
         return _instanceId;
@@ -70,21 +71,22 @@ public class GameMonster : MonsterBase
     }
 
 
-    IEnumerator CheckAndUseSkill()
-    {
-        while (_isAlive)
-        {
-            yield return new WaitForSeconds(SkillCooltime);
+    // 스킬 사용 구간
+    //IEnumerator CheckAndUseSkill()
+    //{
+    //    while (_isAlive)
+    //    {
+    //        yield return new WaitForSeconds(SkillCooltime);
 
-            if (_isAlive == false)
-            {
-                break;
-            }
+    //        if (_isAlive == false)
+    //        {
+    //            break;
+    //        }
 
-            ChangeMonsterDirection();
-            UesSkill();
-        }
-    }
+    //        ChangeMonsterDirection();
+    //        UesSkill(); 
+    //    }
+    //}
 
     void ChangeMonsterDirection()
     {
@@ -101,34 +103,36 @@ public class GameMonster : MonsterBase
         SpriteRenderer_Monster.flipX = (x < 0);
     }
 
-    public void UesSkill()
-    {
-        var gObj = Instantiate(Prefab_MonsterSkillObject, DaniTechGameObjectManager.Inst.transform);
-        if (gObj == null) return;
 
-        var skillProjectileComponent = gObj.GetComponent<SkillProjectile>();
-        if (skillProjectileComponent == null) return;
+     // 스킬 사용 구간
+    //public void UesSkill()
+    //{
+    //    var gObj = Instantiate(Prefab_MonsterSkillObject, DaniTechGameObjectManager.Inst.transform);
+    //    if (gObj == null) return;
 
-        float skillMultiple = _monsterData.SkillAtkMultipleList.Count > 0 ? _monsterData.SkillAtkMultipleList[0] : 0;
-        int finalSkillDamage = GetFinalSkillDamage(_baseAtk, skillMultiple);
-        skillProjectileComponent.InitSkillObject(_instanceId, _lookRight, this.transform.position, finalSkillDamage, tag, OnSkillCollision);
-    }
+    //    var skillProjectileComponent = gObj.GetComponent<SkillProjectile>();
+    //    if (skillProjectileComponent == null) return;
+
+    //    float skillMultiple = _monsterData.SkillAtkMultipleList.Count > 0 ? _monsterData.SkillAtkMultipleList[0] : 0;
+    //    int finalSkillDamage = GetFinalSkillDamage(_baseAtk, skillMultiple);
+    //    skillProjectileComponent.InitSkillObject(_instanceId, _lookRight, this.transform.position, finalSkillDamage, tag, OnSkillCollision);
+    //}
 
     // 몬스터가 소환한 투사체의 충돌이 발생 했을 때 응답이 온다.
-    private void OnSkillCollision(int colliedObjectInstanceId, int damage)
-    {
-        if (colliedObjectInstanceId == 0)  // 0이면 플레이어라는 규칙이 있으므로
-        {
-            var player = DaniTechGameObjectManager.Inst.GetLocalPlayer();
+    //private void OnSkillCollision(int colliedObjectInstanceId, int damage)
+    //{
+    //    if (colliedObjectInstanceId == 0)  // 0이면 플레이어라는 규칙이 있으므로
+    //    {
+    //        var player = DaniTechGameObjectManager.Inst.GetLocalPlayer();
 
-            // 스킬이 충돌한 시점에서 다시 한번 데미지를 계산해도 된다 - 기획적인 요소
-            //float skillMultiple = _monsterData.SkillAtkMultipleList.Count > 0 ? _monsterData.SkillAtkMultipleList[0] : 0;
-            //int finalSkillDamage = GetFinalSkillDamage(_baseAtk, skillMultiple);
+    //        // 스킬이 충돌한 시점에서 다시 한번 데미지를 계산해도 된다 - 기획적인 요소
+    //        //float skillMultiple = _monsterData.SkillAtkMultipleList.Count > 0 ? _monsterData.SkillAtkMultipleList[0] : 0;
+    //        //int finalSkillDamage = GetFinalSkillDamage(_baseAtk, skillMultiple);
 
-            player.TakeDamage(damage);
-        }
+    //        player.TakeDamage(damage);
+    //    }
 
-    }
+    //}
 
     public void TakeDamage(int playerDamage)
     {
@@ -150,7 +154,7 @@ public class GameMonster : MonsterBase
     {
         //DaniTechUIManager.Instance.RemoveHudSlot(_instanceId); //hud 사용 할 경우 주석 해제
         ResetStatChangedEvent();
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject); // 스킬 적중 시 사망처리
 
     }
 

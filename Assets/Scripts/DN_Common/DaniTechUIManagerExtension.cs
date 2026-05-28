@@ -143,6 +143,12 @@ public static class DaniTechUIManagerExtension
             return;
         }
 
+        if (uiBase.gameObject.activeSelf == false) // 5.28 추가
+        {
+            uiBase.gameObject.SetActive(true);
+        }
+
+
         if (uiBase is BattleMainUI battleMainUI)
         {
             battleMainUI.InitBattleWindow(monsterInstanceId, monsterDataId);
@@ -183,7 +189,7 @@ public static class DaniTechUIManagerExtension
     //        // 그 대상이 생성되면 호출
     //        // 몬스터 동적생성이 선행적으로 구조가 잘 잡혀있으므로 그걸 이용할 수 있다.
 
-    //        hubUi.RemoveHubSlost(instanceId);
+    //       hubUi.RemoveHubSlost(instanceId);
 
     //    }
     //}

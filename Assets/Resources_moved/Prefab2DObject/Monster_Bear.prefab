@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1113892166969296485}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: -2.06, z: -2.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameMonster
   SkillCooltime: 3
-  Prefab_MonsterSkillObject: {fileID: 5989606076999986771, guid: 9f23df47b642c464083511c43ec9d933, type: 3}
+  Prefab_MonsterSkillObject: {fileID: 0}
   SpriteRenderer_Monster: {fileID: 6627811897836811848}
   _instanceId: 0
   _dataId: 

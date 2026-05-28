@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameMonster
   SkillCooltime: 5
-  Prefab_MonsterSkillObject: {fileID: 5989606076999986771, guid: cabe880adc1eea24e9c92f96e0e30a72, type: 3}
+  Prefab_MonsterSkillObject: {fileID: 0}
   SpriteRenderer_Monster: {fileID: 6627811897836811848}
   _instanceId: 0
   _dataId: 

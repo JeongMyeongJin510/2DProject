@@ -76,7 +76,7 @@ public class MJ_2DPlayer : MonoBehaviour
     private void Start()
     {
         DaniTechGameObjectManager.Inst.RegisterLocalPlayer(this);
-        DaniTechUIManager.Instance.AddHudSlot(0, this.gameObject.transform);
+        //DaniTechUIManager.Instance.AddHudSlot(0, this.gameObject.transform);//hud 사용 할 경우 주석 해제
     }
 
     private void OnDisable()
@@ -355,7 +355,7 @@ public class MJ_2DPlayer : MonoBehaviour
         if (_playerHp < 0)
         {
             PlayerDie();
-            DaniTechUIManager.Instance.RemoveHudSlot(0);
+            //DaniTechUIManager.Instance.RemoveHudSlot(0); //hud 사용 할 경우 주석 해제
         }
 
     }

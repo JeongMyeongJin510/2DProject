@@ -50,7 +50,7 @@ public class GameMonster : MonsterBase
             _baseAtk = _monsterData.BaseAtk;
         }
 
-        DaniTechUIManager.Instance.AddHudSlot(instanceId, this.gameObject.transform);
+        //DaniTechUIManager.Instance.AddHudSlot(instanceId, this.gameObject.transform);//hud 사용 할 경우 주석 해제
         StartCoroutine(CheckAndUseSkill());
     }
     
@@ -148,7 +148,7 @@ public class GameMonster : MonsterBase
 
     private void OnBattleUnitDie()
     {
-        DaniTechUIManager.Instance.RemoveHudSlot(_instanceId);
+        //DaniTechUIManager.Instance.RemoveHudSlot(_instanceId); //hud 사용 할 경우 주석 해제
         ResetStatChangedEvent();
         Destroy(this.gameObject);
 

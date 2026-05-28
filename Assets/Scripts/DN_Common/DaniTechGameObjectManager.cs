@@ -20,6 +20,7 @@ public class DaniTechGameObjectManager : MonoBehaviour
 
     private MJ_2DPlayer _localPlayer;
 
+    private bool _isBattleActive = false; // 5/27 추가
 
 
     private void Awake()
@@ -156,6 +157,32 @@ public class DaniTechGameObjectManager : MonoBehaviour
         return _monsterObjectContainer[monsterInstanceId];
     }
 
+    public void RequestDestroyMonsterObject(int instanceId)// 5/27 추가
+    {
+        if (_monsterObjectContainer.ContainsKey(instanceId))
+        {
+            GameMonster monster = _monsterObjectContainer[instanceId];
+            _monsterObjectContainer.Remove(instanceId);
+
+            if (monster != null && monster.gameObject != null)
+            {
+                Destroy(monster.gameObject);
+                Debug.LogError("몬스터가 필드에서 삭제되었습니다.");
+            }
+            else
+            {
+                Debug.LogWarning("몬스터가 _monsterObjectContainer에 존재하지 않습ㄴ디ㅏ");
+            }
+
+        }
+    }
+
+    public void FinishBattleState()// 5/27 추가
+    {
+        _isBattleActive = false;
+        Debug.LogError("전투 완료. 다음 몬스터와 충돌 가능 상태");
+    }
+
 
     //[필드 오브젝트] ====================================================================================================
 
@@ -209,6 +236,11 @@ public class DaniTechGameObjectManager : MonoBehaviour
 
     public void InterCeptMonsterCollision(int monsterInstanceId, string monsterDataId)
     {
+        if (_isBattleActive) // 5/27 추가
+        {
+            return;
+        }
+
         if (DaniTechUIManager.Instance != null)
         {
             DaniTechUIManager.Instance.OpenBattleMainUI(monsterInstanceId, monsterDataId);

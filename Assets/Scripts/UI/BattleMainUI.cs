@@ -24,7 +24,8 @@ public class BattleMainUI : DaniTechUIBase
 
 
     [Header("실시간 런타임 변동 데이터")]
-    public int _targetMonsterInstanceId;
+    private int _targetMonsterInstanceId;
+    private string _targetMonsterName;
 
     // 몬스터 전투 스텟
     private int _currentMonsterHp;
@@ -64,6 +65,8 @@ public class BattleMainUI : DaniTechUIBase
             _currentMonsterHp = monsterComponent._baseHp;
             _maxMonsterHp = monsterComponent._baseHp;
             _monsterBaseAtk = monsterComponent._baseAtk;
+
+            _targetMonsterName = monsterComponent.gameObject.name;
 
             var monsterSpriteRenderer = monsterComponent.GetComponentInChildren<SpriteRenderer>();
 
@@ -255,6 +258,7 @@ public class BattleMainUI : DaniTechUIBase
         }
         //this.gameObject.SetActive(false);
 
+        DaniTechUIManager.Instance.OpenSimplePopup($"{_targetMonsterName}와의 전투에서 승리하였습니다!");
 
     }
 

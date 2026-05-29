@@ -168,5 +168,22 @@ public class DaniTechGameManager : MonoBehaviour
     {
         return DaniTechGameObjectManager.Inst.GetLocalPlayer();
     }
+
+
+
+    //(5.29 추가) 게임 종료 기능 추가 
+    public void ProcessGameClear() 
+    {
+        if (DaniTechUIManager.Instance != null)
+        {
+            DaniTechUIManager.Instance.OpenSimplePopup("★ GAME CLEAR ★\n축하합니다! 포탈을 통해 무사히 탈출에 성공하셨습니다.");
+        }
+        Invoke("QuitGame", 3f);
+    }
+
+    private void QuitGame()
+    {
+        Application.Quit();
+    }
 }
 

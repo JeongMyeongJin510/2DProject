@@ -276,8 +276,9 @@ public class BattleMainUI : DaniTechUIBase
         DaniTechUIManager.Instance.CloseContentUI(DaniTechUIType.BattleMainUI); //5.28
 
 
-        //로비 복귀
-        DaniTechUIManager.Instance.OpenContentUI(DaniTechUIType.LobbyUI);
+        //게임ㅇ오버UI 
+        DaniTechUIManager.Instance.OpenContentUI(DaniTechUIType.GameOverUI);
+
     }
 
 

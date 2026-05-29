@@ -186,10 +186,14 @@ public class BattleMainUI : DaniTechUIBase
             _playerCurrentDef = (int)(_playerCurrentDef * multiplier);
 
             Debug.LogWarning($"{bingoCount}줄 빙고 성공! 공격력 {_playerCurrentAtk} / 방어력 {_playerCurrentDef} ({multiplier}배 적용)");
+            DaniTechUIManager.Instance.OpenSimplePopup($"{bingoCount}줄 빙고 성공! 공격력 {_playerCurrentAtk} / 방어력 {_playerCurrentDef} ({multiplier}배 적용)");
+
         }
         else
         {
             Debug.LogWarning($"이번턴에는 빙고가 완성되지 않았습니다. 공격력 {_playerCurrentAtk} / 방어력 {_playerCurrentDef} (기본배율 1배)");
+            DaniTechUIManager.Instance.OpenSimplePopup($"이번턴에는 빙고가 완성되지 않았습니다. 공격력 {_playerCurrentAtk} / 방어력 {_playerCurrentDef} (기본배율 1배)");
+
         }
     }
 

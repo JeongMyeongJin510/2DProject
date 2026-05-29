@@ -75,19 +75,25 @@ public class DaniTech_SimplePopup : DaniTechUIBase
         DaniTechUIManager.Instance.ClosePopupUI(DaniTechUIType.DNSimplePopup);
     }
 
-    public void SetUI(string msg)
+    public void SetUI(string msg, Color color = default)
     {
         Text_Msg.text = msg;
-        CheckAndChangeColor(msg);
+        //색상 지정 없으면 흰색으로
+        Text_Msg.color = (color == default) ? Color.white : color;
+
+        //CheckAndChangeColor(msg); // 미사용으로 인한 주석처리
     }
 
-    private void CheckAndChangeColor(string msg)
-    {
-        if (msg.Contains("출력"))
-        {
-            Text_Msg.color = Color.red;
-        }
-    }
+
+
+    // "출력" 키워드가 있으면 빨간색으로 바꾸는 코드
+    //private void CheckAndChangeColor(string msg)
+    //{
+    //    if (msg.Contains("출력"))
+    //    {
+    //        Text_Msg.color = Color.red;
+    //    }
+    //}
 
     //IEnumerator CoCloseSelf()
     //{

@@ -52,7 +52,7 @@ public static class DaniTechUIManagerExtension
         // MainUI도
     }
 
-    public static void OpenSimplePopup(this DaniTechUIManager uiManager, string msg)
+    public static void OpenSimplePopup(this DaniTechUIManager uiManager, string msg, Color color = default)
     {
         var uiBase = uiManager.OpenPopupUI(DaniTechUIType.DNSimplePopup);
         if (uiBase == null)
@@ -63,7 +63,7 @@ public static class DaniTechUIManagerExtension
 
         if (uiBase is DaniTech_SimplePopup simplePopup)
         {
-            simplePopup.SetUI(msg);
+            simplePopup.SetUI(msg, color);
         }
     }
 

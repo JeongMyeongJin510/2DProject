@@ -26,7 +26,8 @@ public enum DaniTechUIType
     GameBookUI,
     BattleMainUI,
     HudUI,
-    GameOverUI
+    GameOverUI,
+    GameClearUI
 }
 
 public static class DaniTechUIManagerExtension
@@ -159,6 +160,16 @@ public static class DaniTechUIManagerExtension
     public static void OpenGameOverUI(this DaniTechUIManager uiManger)
     {
         var uiBase = uiManger.OpenContentUI(DaniTechUIType.GameOverUI);
+        if (uiBase == null)
+        {
+            Debug.LogWarning($"UI가 생성되지 않았습니다");
+            return;
+        }
+    }
+
+    public static void OpenGameClearUI(this DaniTechUIManager uiManger)
+    {
+        var uiBase = uiManger.OpenContentUI(DaniTechUIType.GameClearUI);
         if (uiBase == null)
         {
             Debug.LogWarning($"UI가 생성되지 않았습니다");

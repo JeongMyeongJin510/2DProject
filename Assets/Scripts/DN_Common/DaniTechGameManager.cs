@@ -178,12 +178,16 @@ public class DaniTechGameManager : MonoBehaviour
         {
             DaniTechUIManager.Instance.OpenSimplePopup("★ GAME CLEAR ★\n축하합니다! 포탈을 통해 무사히 탈출에 성공하셨습니다.");
         }
-        Invoke("QuitGame", 3f);
+
+        DaniTechUIManager.Instance.OpenGameClearUI();
+        //Invoke("QuitGame", 3f);
     }
 
-    private void QuitGame()
-    {
-        Application.Quit();
-    }
+
+    // 게임클리어 UI 추가로 인한 폐기
+    //private void QuitGame()
+    //{
+    //    Application.Quit();
+    //}
 }
 

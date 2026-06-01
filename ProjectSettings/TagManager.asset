@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - SkillObject
   - Portal
+  - DeadZon
+  - DeadZone
   layers:
   - Default
   - TransparentFX

@@ -403,6 +403,18 @@ public class MJ_2DPlayer : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("DeadZone") == false)
+        {
+            return;
+        }
+
+        DaniTechGameManager.Inst.ProcessGameOver();
+    }
+
+
+
     private void OnDrawGizmos()
     {
         if(_groundCheck != null)

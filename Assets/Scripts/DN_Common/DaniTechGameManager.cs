@@ -184,6 +184,17 @@ public class DaniTechGameManager : MonoBehaviour
     }
 
 
+    public void ProcessGameOver()
+    {
+        var player = GetLocalPlayer();
+        if (player != null)
+        {
+            player.enabled = false;
+        }
+        DaniTechUIManager.Instance.OpenGameOverUI();
+    }
+
+
     // 게임클리어 UI 추가로 인한 폐기
     //private void QuitGame()
     //{

@@ -104,5 +104,105 @@
     "SelectionDialogueIdList": null,
     "TexturePath": null,
     "VoicePath": "Sound/Voice_Pug_1_I_WantToEatPizza"
+  },
+  {
+    "Id": "dialogue_intro_1_100",
+    "CharacterDataId": null,
+    "Description": "(하품) 후아암…오늘도 완벽하게 아무것도 안 했다.",
+    "NextDialogueId": "dialogue_intro_1_101",
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Image_Intro_1",
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_intro_1_101",
+    "CharacterDataId": null,
+    "Description": "내 꿈은 오직 하나…아무것도 안 해도 통장에 돈이 썩어 넘치는 '돈 많은 백수'가 되는 것뿐인데…",
+    "NextDialogueId": "dialogue_intro_1_102",
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Image_Intro_1",
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_intro_1_102",
+    "CharacterDataId": null,
+    "Description": "하지만 현실은 통장 잔고 0원…이대로는 조만간 굶어 죽겠어!!",
+    "NextDialogueId": "dialogue_intro_1_103",
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Image_Intro_1",
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_intro_1_103",
+    "CharacterDataId": null,
+    "Description": "[국왕의 특별 공고] 나이가 들어 기력이 쇠한 국왕 폐하께서 전설의 영약, '황금 사과'를 구하는 자를 찾으신다!",
+    "NextDialogueId": "dialogue_intro_1_104",
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Image_Intro_2",
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_intro_1_104",
+    "CharacterDataId": null,
+    "Description": "사과를 가져오는 자에게는 평생 먹고 놀 수 있는 막대한 금은보화와 영지를 하사하겠노라!",
+    "NextDialogueId": "dialogue_intro_1_105",
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Image_Intro_2",
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_intro_1_105",
+    "CharacterDataId": null,
+    "Description": "……이거다!!",
+    "NextDialogueId": "dialogue_intro_1_106",
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Image_Intro_3",
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_intro_1_106",
+    "CharacterDataId": null,
+    "Description": "황금 사과만 가져가면 평생 일 안하고 놀고먹을 수 있다는 거잖아?!",
+    "NextDialogueId": "dialogue_intro_1_107",
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Image_Intro_3",
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_intro_1_107",
+    "CharacterDataId": null,
+    "Description": "내 완벽한 '백수 라이프'를 위해, 저 사과는 무조건 내가 가진다!",
+    "NextDialogueId": null,
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Image_Intro_3",
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_play_1_100",
+    "CharacterDataId": null,
+    "Description": "좋아, 목표는 저 산 꼭대기다! ...근데 몬스터들이 왜 이렇게 많아?",
+    "NextDialogueId": "dialogue_play_1_101",
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": null,
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_play_1_101",
+    "CharacterDataId": null,
+    "Description": "방해하지 마라, 몬스터 놈들아! 내 소중한 백수의 꿈을 막을 순 없다!!",
+    "NextDialogueId": null,
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": null,
+    "VoicePath": null
   }
 ]

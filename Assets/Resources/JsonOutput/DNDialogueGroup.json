@@ -31,5 +31,19 @@
     "Id": "npc_shop_hellena_success_buyItem_1",
     "Comment": "상점-헬레나 구매 성공 ",
     "DialogueIdList": null
+  },
+  {
+    "Id": "dialogue_group_intro_1",
+    "Comment": "인트로",
+    "DialogueIdList": [
+      "dialogue_intro_1_100",
+      "dialogue_intro_1_101",
+      "dialogue_intro_1_102",
+      "dialogue_intro_1_103",
+      "dialogue_intro_1_104",
+      "dialogue_intro_1_105",
+      "dialogue_intro_1_106",
+      "dialogue_intro_1_107"
+    ]
   }
 ]

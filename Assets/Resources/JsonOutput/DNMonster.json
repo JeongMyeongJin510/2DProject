@@ -1,51 +1,54 @@
 [
   {
-    "Id": "mob_slim_1",
-    "Name": "슬라이무",
-    "Description": "슬라이무는 공격을 받을 때마다 딸기맛, 초코맛, 바닐라맛으로 변한다",
-    "BaseHp": 500,
-    "BaseAtk": 20,
+    "Id": "mob_skeleton_1",
+    "Name": "스켈레톤",
+    "Description": "스켈레톤이다.덜그럭..덜그럭..",
+    "BaseHp": 700,
+    "BaseAtk": 50,
     "NormalAtkMultiple": 1,
     "SkillAtkMultipleList": [
       2
     ],
-    "IconPath": "Icon/Icon_Slime",
-    "PrefabPath": "2DObject/Monster_Slime"
+    "IconPath": "Icon/Icon_Skul",
+    "PrefabPath": "2DObject/Monster_Skeleton"
   },
   {
-    "Id": "mob_dog_1",
-    "Name": "도그",
-    "Description": "도그는 도그다",
-    "BaseHp": null,
-    "BaseAtk": null,
-    "NormalAtkMultiple": null,
-    "SkillAtkMultipleList": null,
-    "IconPath": null,
-    "PrefabPath": null
-  },
-  {
-    "Id": "mob_pigme_1",
-    "Name": "피그미",
-    "Description": "피그미는 충돌하면 사라진다. 간헐적으로 금화가 터져나온다.",
-    "BaseHp": null,
-    "BaseAtk": null,
-    "NormalAtkMultiple": null,
-    "SkillAtkMultipleList": null,
-    "IconPath": null,
-    "PrefabPath": null
-  },
-  {
-    "Id": "mob_bear_1",
-    "Name": "곰저씨",
-    "Description": "곰 아저씨다. 반갑곰~",
-    "BaseHp": 1000,
-    "BaseAtk": 100,
-    "NormalAtkMultiple": 0.5,
+    "Id": "mob_bandit_1",
+    "Name": "약탈자",
+    "Description": "모험가들을 약탈한다.",
+    "BaseHp": 700,
+    "BaseAtk": 50,
+    "NormalAtkMultiple": 1,
     "SkillAtkMultipleList": [
-      1.5,
-      5
+      2
     ],
-    "IconPath": "Icon/Icon_Bear",
-    "PrefabPath": "2DObject/Monster_Bear"
+    "IconPath": "Icon/Icon_Bandit",
+    "PrefabPath": "2DObject/Monster_Bandit"
+  },
+  {
+    "Id": "mob_goblin_1",
+    "Name": "고블린",
+    "Description": "산에 서식하는 고블린이다.",
+    "BaseHp": 600,
+    "BaseAtk": 45,
+    "NormalAtkMultiple": 1,
+    "SkillAtkMultipleList": [
+      2
+    ],
+    "IconPath": "Icon/Icon_Goblin",
+    "PrefabPath": "2DObject/Monster_Goblin"
+  },
+  {
+    "Id": "mob_mushroom _1",
+    "Name": "괴물버섯",
+    "Description": "산에 서식 하는 괴물버섯이다.독성이 매우 강하다.",
+    "BaseHp": 600,
+    "BaseAtk": 60,
+    "NormalAtkMultiple": 1,
+    "SkillAtkMultipleList": [
+      2
+    ],
+    "IconPath": "Icon/Icon_Mushroom",
+    "PrefabPath": "2DObject/Monster_Mushroom "
   }
 ]

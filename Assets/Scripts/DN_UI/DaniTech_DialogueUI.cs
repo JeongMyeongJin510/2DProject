@@ -9,6 +9,9 @@ public class DaniTech_DialogueUI : DaniTechUIBase
     [SerializeField] private Text Text_Description;
     [SerializeField] private DaniTechUIButton Button_Next;
 
+    [SerializeField] private RawImage RawImage_IntroImg; // 06.02 추가
+
+
     private string _currentDialogueId;
     private Queue<string> _descriptionQueue = new Queue<string>();
 
@@ -33,6 +36,7 @@ public class DaniTech_DialogueUI : DaniTechUIBase
         if(isNextDialogueExist == false)
         {
             DaniTechUIManager.Instance.CloseContentUI(DaniTechUIType.DNDialogueUI);
+            DaniTechUIManager.Instance.OpenContentUI(DaniTechUIType.LobbyUI); // 06.02 추가
         }
     }
 
@@ -86,6 +90,7 @@ public class DaniTech_DialogueUI : DaniTechUIBase
         }
 
         SetCharacterName(dialogueData.CharacterDataId);
+        SetIntroImage(dialogueData.TexturePath);
     }
 
     private bool CheckAndSetDescription()
@@ -115,6 +120,19 @@ public class DaniTech_DialogueUI : DaniTechUIBase
             }
         }
     }
+
+    private void SetIntroImage(string texturePath)
+    {
+        if (string.IsNullOrEmpty(texturePath) == true)
+        {
+            RawImage_IntroImg.gameObject.SetActive(false);
+            return;
+        }
+        
+        RawImage_IntroImg.gameObject.SetActive(true);
+        DaniTechGameUtil.LoadAndSetTexture(RawImage_IntroImg, texturePath).Forget();
+    }
+
 
     private void SetCurrentDialogueDescription(string description)
     {

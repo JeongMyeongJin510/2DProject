@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DaniTech_SpawnSpot
   _spawnSpotType: 3
   _startSpawnType: 3
-  _spawnObjectDataId: 
+  _spawnObjectDataId: dialogue_mainstream_1_1_100
   Collider_OnSpawnStart: {fileID: 2039119099879299171}
 --- !u!58 &2039119099879299171
 CircleCollider2D:

@@ -10,7 +10,42 @@ public class BattleSlotMachineUI : DaniTechUIBase
 
     // 사실 슬롯 게임은 동적생성은 필요 없다 => 이유는 슬롯 9개가 고정이기 때문에!
     // 미리 프리팹에서 지정해두고 그걸 돌려써도 된다
+    [Header("슬롯 리스트")]
     [SerializeField] private List<WeaponSlotUI> _slotList;
+
+    [Header("빙고 라인")]
+    [SerializeField] private GameObject BingoLine_Row1;
+    [SerializeField] private GameObject BingoLine_Row2;
+    [SerializeField] private GameObject BingoLine_Row3;
+    [SerializeField] private GameObject BingoLine_Col1;
+    [SerializeField] private GameObject BingoLine_Col2;
+    [SerializeField] private GameObject BingoLine_Col3;
+    [SerializeField] private GameObject BingoLine_Diag1;
+    [SerializeField] private GameObject BingoLine_Diag2;
+
+
+    // 빙고 라인 인덱스 규칙 6.02 추가
+    // 0 = 가로 {0,1,2} / 1 = 가로 {3,4,5} / 2 = 가로 {6,7,8}
+    // 3 = 세로 {0,3,6} / 4 = 세로 {1,4,7} / 5 = 세로 {2,5,8}
+    // 6 = 대각선 {0,4,8} / 7 = 대각선 {2,4,6}
+    private Dictionary<int, GameObject> _bingoLineDict = new Dictionary<int, GameObject>();
+
+
+    private void Awake()
+    {
+        _bingoLineDict.Add(0, BingoLine_Row1);
+        _bingoLineDict.Add(1, BingoLine_Row2);
+        _bingoLineDict.Add(2, BingoLine_Row3);
+        _bingoLineDict.Add(3, BingoLine_Col1);
+        _bingoLineDict.Add(4, BingoLine_Col2);
+        _bingoLineDict.Add(5, BingoLine_Col3);
+        _bingoLineDict.Add(6, BingoLine_Diag1);
+        _bingoLineDict.Add(7, BingoLine_Diag2);
+
+        HideAllBingoLine();
+    }
+
+
 
     private void OnEnable()
     {
@@ -36,6 +71,9 @@ public class BattleSlotMachineUI : DaniTechUIBase
             return;
         }
 
+        // 스핀 시작 시 빙고 라인 초기화
+        HideAllBingoLine();
+
         List<int> turnResultIndices = new List<int>();
 
         foreach (var slot in _slotList)
@@ -53,6 +91,7 @@ public class BattleSlotMachineUI : DaniTechUIBase
 
     private void SendResultToBattleMainUI(List<int> resultIndices)
     {
+
         var battleMainUI = GetComponentInParent<BattleMainUI>();
 
         if (battleMainUI != null)
@@ -62,6 +101,31 @@ public class BattleSlotMachineUI : DaniTechUIBase
         else
         {
             Debug.LogWarning("[슬롯머신 UI] 부모 오브젝트에서 'BattleMainUI' 스크립트를 찾을 수 없습니다.");
+        }
+    }
+
+    public void ShowBingoLine(List<int> bingoLineIndices)
+    {
+        HideAllBingoLine();
+
+        foreach (int index in bingoLineIndices)
+        {
+            if(_bingoLineDict.ContainsKey(index) == false)
+            {
+                continue;
+            }
+
+            _bingoLineDict[index].SetActive(true);
+        }
+
+        Invoke("HideAllBingoLine", 2f);
+    }
+
+    private void HideAllBingoLine()
+    {
+        foreach (var lineKv in _bingoLineDict)
+        {
+            lineKv.Value.SetActive(false);
         }
     }
 

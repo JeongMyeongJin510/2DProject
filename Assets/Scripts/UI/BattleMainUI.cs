@@ -41,7 +41,8 @@ public class BattleMainUI : DaniTechUIBase
     // 전투 종료 중복 처리 방지
     private bool _isBattleOver;
 
-
+    // 한번만 찾아서 저장해두는 캐싱(매번 GetComponentInChildren 탐색방지)
+    private BattleSlotMachineUI _slotMachineUI;
 
     private void OnEnable()
     {
@@ -57,6 +58,9 @@ public class BattleMainUI : DaniTechUIBase
     {
         _targetMonsterInstanceId = monsterInstanceId;
         _isBattleOver = false;
+
+        // 자식에서 SlotMachineUI 한번만 찾아서 캐싱
+        _slotMachineUI = GetComponentInChildren<BattleSlotMachineUI>();
 
         // 부딪힌 몬스터 컴포넌트 실체를 가져온다
         var monsterComponent = DaniTechGameObjectManager.Inst.GetMonsterObjectByInstanceId(monsterInstanceId);
@@ -160,11 +164,14 @@ public class BattleMainUI : DaniTechUIBase
     private void CheckLineMatchBingoBouns(List<int> resultIndices)
     {
         int bingoCount = 0;
+
+        List<int> bingoLineIndices = new List<int>();  // 06.02 빙고 표시를 위해 리스트 추가 
+
         int[,] linesToMatch = new int[8, 3]
         {
-            { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 },
-            { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 },
-            { 0, 4, 8 }, { 2, 4, 6 }
+            { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 },   //가로 3줄(인덱스 0,1,2)
+            { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 },   //세로 3줄 (인덱스 3,4,5)
+            { 0, 4, 8 }, { 2, 4, 6 }                 // 대각 2줄 (인덱스 6,7)
         };
 
         for (int i = 0; i < 8; i++)
@@ -176,6 +183,7 @@ public class BattleMainUI : DaniTechUIBase
             if (resultIndices[idxA] == resultIndices[idxB] && resultIndices[idxB] == resultIndices[idxC])
             {
                 bingoCount++;
+                bingoLineIndices.Add(i);
             }
         }
 
@@ -187,6 +195,11 @@ public class BattleMainUI : DaniTechUIBase
 
             Debug.LogWarning($"{bingoCount}줄 빙고 성공! 공격력 {_playerCurrentAtk} / 방어력 {_playerCurrentDef} ({multiplier}배 적용)");
             DaniTechUIManager.Instance.OpenSimplePopup($"{bingoCount}줄 빙고 성공! 공격력 {_playerCurrentAtk} / 방어력 {_playerCurrentDef} ({multiplier}배 적용)");
+
+            if (_slotMachineUI != null)
+            {
+                _slotMachineUI.ShowBingoLine(bingoLineIndices);
+            }
 
         }
         else
@@ -260,7 +273,7 @@ public class BattleMainUI : DaniTechUIBase
 
             DaniTechUIManager.Instance.CloseContentUI(DaniTechUIType.BattleMainUI); //5.28
         }
-        //this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false); 비활성화만 시키니깐 다음 전투에서 베틀메인UI가 뜨지 않는 버그 발생
 
         DaniTechUIManager.Instance.OpenSimplePopup($"{_targetMonsterName}와의 전투에서 승리하였습니다!");
 

@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 80e8e0aaab7e37b4084b72f287df5f5d
   m_SerializeEntries:
+  - m_GUID: 0447afe7b1269c547b34593bbf260c5b
+    m_Address: Texture2D/Image_Intro_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0944d64d3b8222b4e92699bf273e509d
     m_Address: 2DPrefab/Harvest_Carrot
     m_ReadOnly: 0
@@ -41,7 +46,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2b5f193b39927d048b0dc2c21096ac5a
-    m_Address: 2DObject/Monster_Bear
+    m_Address: 2DObject/Monster_Bandit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 31227113c30851d408646e346b82ca2b
+    m_Address: Icon/Icon_Mushroom
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -70,8 +80,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 54f8589e2ef2f7a4e875a51ae49b1e7b
+    m_Address: MeleeWeapon1H/BronzeDagger
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d133bb7827719740843055d472597eb
+    m_Address: 2DObject/Monster_Goblin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5e52f79c11c806d4cbf5e6dc3eb5ce80
     m_Address: Texture2D/Loading_Image_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62b4a2f3dff4a9a4ba03a764d5fdd006
+    m_Address: Armor/DarkMountain
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -91,12 +116,22 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6ed84e73907844a4a8ffa2b2730f5f6f
-    m_Address: 2DObject/Monster_Slime
+    m_Address: 2DObject/Monster_Skeleton
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6f44f0509ed049e4dbe0904fd8318ca5
     m_Address: 2DPrefab/Harvest_Corn
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8408424d39747674d9203451d1e9c843
+    m_Address: '2DObject/Monster_Mushroom '
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84d6a36e47e8f9042a960a8b033203a1
+    m_Address: Boots/DarkMountain
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -110,13 +145,38 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 896dada9aa8b8444b8145f80381d5fda
+    m_Address: Helmet/KnightHelm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 977d9097ae22c934f833f5441fafc940
+    m_Address: Texture2D/Image_Intro_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 988485599ab6ecb4db508e35e6b5086a
     m_Address: Sound/Pugmia_Bgm_Housing_1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d4ad9585d881b9469236aa4e598a8b1
+    m_Address: Helmet/ManticoreHelmet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a98742c6e979c6645aab1b9d5ad3e81c
     m_Address: Texture2D/Image_GameClear
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aca0ef9500579b146b3f40927573382b
+    m_Address: Icon/Icon_Bandit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: afa7ff36168d97e4d91c26abd035f60f
+    m_Address: Texture2D/Image_Intro_2
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -130,8 +190,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bbceae73b019590439ef5129744308a1
+    m_Address: MeleeWeapon1H/SwampWarriorSpear
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c03fbd6f990a8a54680cdd21777738e1
     m_Address: MeleeWeapon2H/OldPoleaxe
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c07130a1b6f38df4497f48d87f0ca1ac
+    m_Address: Icon/Icon_Skul
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0ea4b6e528e7fe4aa6cdc94d38691a1
+    m_Address: MeleeWeapon2H/AriostinGreatsword
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c544836e2ceee34428d1abdac6b5ac59
+    m_Address: Boots/GreyKnight
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -145,8 +225,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc038b2ab22c65c4488779487c9dae97
+    m_Address: MeleeWeapon1H/WoodenClub
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e29f293938fc0494d87d11a7532e32ea
     m_Address: Armor/RoyalTunic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3493125569b0ea48ac951bf7da0d6a3
+    m_Address: Icon/Icon_GoldApple
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eab93444844589c40a72574411dd0120
+    m_Address: MeleeWeapon1H/VikingAxe
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0cd2993bd6e0f343849df7b48d7de53
+    m_Address: Icon/Icon_Goblin
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

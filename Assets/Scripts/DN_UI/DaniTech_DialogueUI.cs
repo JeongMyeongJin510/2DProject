@@ -11,6 +11,8 @@ public class DaniTech_DialogueUI : DaniTechUIBase
 
     [SerializeField] private RawImage RawImage_IntroImg; // 06.02 추가
 
+    // 대사의 목적 상태를 보관할 멤버변수
+    private DialogueContextType _curContextType = DialogueContextType.None;
 
     private string _currentDialogueId;
     private Queue<string> _descriptionQueue = new Queue<string>();
@@ -35,9 +37,31 @@ public class DaniTech_DialogueUI : DaniTechUIBase
         bool isNextDialogueExist = CheckAndStartNextDialogue();
         if(isNextDialogueExist == false)
         {
-            DaniTechUIManager.Instance.CloseContentUI(DaniTechUIType.DNDialogueUI);
-            DaniTechUIManager.Instance.OpenContentUI(DaniTechUIType.LobbyUI); // 06.02 추가
+            // 모든 연쇄 대사가 완전히 종료되었다면 정산
+            ProcessDialogue();
         }
+
+ 
+    }
+
+    //06.02 추가 대사 종료 후 다음 UI 서순 제어 목적
+    private void ProcessDialogue()
+    {
+        DaniTechUIManager.Instance.CloseContentUI(DaniTechUIType.DNDialogueUI);
+
+
+        //대사 목적에 따라 서순 분기
+        switch (_curContextType)
+        {
+            case DialogueContextType.Intro:
+                DaniTechUIManager.Instance.OpenContentUI(DaniTechUIType.LobbyUI);
+                break;
+            case DialogueContextType.InGameSpot:
+                Debug.LogWarning("인게임 스팟 출력");
+                break;
+        }
+
+        _curContextType = DialogueContextType.None;
     }
 
     private bool CheckAndStartNextDialogue()
@@ -61,8 +85,14 @@ public class DaniTech_DialogueUI : DaniTechUIBase
     }
 
     // 다이얼로그를 시작하는 메서드 (외부에서 UIManager를 통해 다이얼로그 시작을 요청할때도 쓴다!)
-    public void StartDialogue(string dialogeId)
+    public void StartDialogue(string dialogeId, DialogueContextType contextType = DialogueContextType.None)
     {
+        //contextType이 None이 아닐때만 덮어씀 (연쇄 대상에서 초기화 방지)
+        if (contextType != DialogueContextType.None)
+        {
+            _curContextType = contextType;
+        }
+
         var dialogueData = DaniTechGameDataManager.Instance.GetDNDialogueData(dialogeId);
         if (dialogueData == null)
         {

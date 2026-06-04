@@ -30,6 +30,13 @@ public enum DaniTechUIType
     GameClearUI
 }
 
+public enum DialogueContextType
+{
+    None = 0,
+    Intro,
+    InGameSpot
+}
+
 public static class DaniTechUIManagerExtension
 {
     public static string GetUIPath(this DaniTechUIManager uiManager, DaniTechUIRootType uiRootType, DaniTechUIType uiType)
@@ -45,7 +52,7 @@ public static class DaniTechUIManagerExtension
     public static void ShowStartupUIOnGameStart(this DaniTechUIManager uiManager)
     {
         uiManager.OpenLoadingUI();
-        uiManager.OpenDialogueUI("dialogue_intro_1_100"); // 06.02 추가
+        uiManager.OpenDialogueUI("dialogue_intro_1_100", DialogueContextType.Intro); // 06.02 추가
         //uiManager.OpenContentUI(DaniTechUIType.LobbyUI);
         //uiManager.OpenUI(DaniTechUIRootType.MainUI, DaniTechUIType.HudUI); //Hud 필요한 경우 주석 해제
         uiManager.OpenUI(DaniTechUIRootType.MainUI, DaniTechUIType.MiniPJ_MainUI);
@@ -112,7 +119,7 @@ public static class DaniTechUIManagerExtension
         uiManager.CloseUI(DaniTechUIRootType.VeryFrontUI, DaniTechUIType.DNLoadingUI);
     }
 
-    public static void OpenDialogueUI(this DaniTechUIManager uiManager, string startDialogueId)
+    public static void OpenDialogueUI(this DaniTechUIManager uiManager, string startDialogueId, DialogueContextType contextType = DialogueContextType.None)
     {
         var uiBase = uiManager.OpenContentUI(DaniTechUIType.DNDialogueUI);
         if(uiBase == null)
@@ -123,7 +130,7 @@ public static class DaniTechUIManagerExtension
 
         if (uiBase is DaniTech_DialogueUI dialogueUi)
         {
-            dialogueUi.StartDialogue(startDialogueId);
+            dialogueUi.StartDialogue(startDialogueId, contextType);
         }
     }
 

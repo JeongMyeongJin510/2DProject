@@ -66,6 +66,7 @@ public class DNDialogueGroupData : GameDataBase
 public class DNDialogueData : GameDataBase
 {
     public string CharacterDataId;
+    public string SpeakerName; // 06.04 추가 캐릭터 데이터 없이 이름 직접 입력
     public string Description;
     public string NextDialogueId;
     public List<string> SelectionNameList;

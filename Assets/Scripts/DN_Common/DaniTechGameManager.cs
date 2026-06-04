@@ -171,17 +171,32 @@ public class DaniTechGameManager : MonoBehaviour
 
 
 
-    //(5.29 추가) 게임 종료 기능 추가 
+    //(06.04 추가)  엔딩 다이얼로그 -> 게임 클리어 UI 나오도록 추가 
     public void ProcessGameClear() 
     {
-        if (DaniTechUIManager.Instance != null)
+       var player = GetLocalPlayer();
+        if (player != null)
         {
-            DaniTechUIManager.Instance.OpenSimplePopup("★ GAME CLEAR ★\n축하합니다! 포탈을 통해 무사히 탈출에 성공하셨습니다.");
+            player.enabled = false;
         }
 
-        DaniTechUIManager.Instance.OpenGameClearUI();
-        //Invoke("QuitGame", 3f);
+        // 게임클리어UI 열지않고 다이얼 로그 먼저 시작
+        string endingDialogueId = Random.Range(0, 2) == 0 ? "dialogue_ending_1_100" : "dialogue_ending_2_100";
+        DaniTechUIManager.Instance.OpenDialogueUI(endingDialogueId, DialogueContextType.Ending);
     }
+
+
+    //(5.29 추가) 게임 종료 기능 추가 
+    //public void ProcessGameClear()
+    //{
+    //    if (DaniTechUIManager.Instance != null)
+    //    {
+    //        DaniTechUIManager.Instance.OpenSimplePopup("★ GAME CLEAR ★\n축하합니다! 포탈을 통해 무사히 탈출에 성공하셨습니다.");
+    //    }
+
+    //    DaniTechUIManager.Instance.OpenGameClearUI();
+    //    //Invoke("QuitGame", 3f);
+    //}
 
 
     public void ProcessGameOver()

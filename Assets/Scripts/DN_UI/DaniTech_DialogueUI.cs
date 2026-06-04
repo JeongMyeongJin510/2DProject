@@ -59,6 +59,9 @@ public class DaniTech_DialogueUI : DaniTechUIBase
             case DialogueContextType.InGameSpot:
                 Debug.LogWarning("인게임 스팟 출력");
                 break;
+            case DialogueContextType.Ending:  //06.04 추가
+                DaniTechUIManager.Instance.OpenGameClearUI();
+                break;
         }
 
         _curContextType = DialogueContextType.None;
@@ -119,7 +122,7 @@ public class DaniTech_DialogueUI : DaniTechUIBase
             SetCurrentDialogueDescription(dialogueData.Description);
         }
 
-        SetCharacterName(dialogueData.CharacterDataId);
+        SetCharacterName(dialogueData.CharacterDataId, dialogueData.SpeakerName); //06.04 추가
         SetIntroImage(dialogueData.TexturePath);
     }
 
@@ -135,20 +138,43 @@ public class DaniTech_DialogueUI : DaniTechUIBase
         return isNextDescriptionExsist;
     }
 
-    private void SetCharacterName(string characterDataId)
+    private void SetCharacterName(string characterDataId, string speakerName)  //06.04 추가
     {
-        // 캐릭터 정보가 있다면 말하는 이의 추가 정보를 표기해줄 수 있도록 연동하는 부분
-        bool isActive = (string.IsNullOrEmpty(characterDataId) == false);
-        Layout_CharacterName.SetActive(isActive);
-
-        if (isActive)
+        if (string.IsNullOrEmpty(characterDataId) == false)
         {
             var characterData = DaniTechGameDataManager.Instance.GetCharacterData(characterDataId);
-            if(characterData != null)
+            if (characterData != null)
             {
+                Layout_CharacterName.SetActive(true);
                 Text_Character.text = characterData.Name;
+                return;
             }
+            
         }
+
+        // CharacterDataId가 없으며ㅕ녀 SpeakerName 직접 사용 //06.04 추가
+
+        bool isActive = string.IsNullOrEmpty(speakerName) == false;
+        Layout_CharacterName.SetActive(isActive);
+        if (isActive)
+        {
+            Text_Character.text = speakerName;
+        }
+
+
+        // 캐릭터 정보가 있다면 말하는 이의 추가 정보를 표기해줄 수 있도록 연동하는 부분
+        // 기존 코드 06.04 스피커네임을 추가하면서 주석처리
+        //bool isActive = (string.IsNullOrEmpty(characterDataId) == false);
+        //Layout_CharacterName.SetActive(isActive);
+
+        //if (isActive)
+        //{
+        //    var characterData = DaniTechGameDataManager.Instance.GetCharacterData(characterDataId);
+        //    if(characterData != null)
+        //    {
+        //        Text_Character.text = characterData.Name;
+        //    }
+        //}
     }
 
     private void SetIntroImage(string texturePath)

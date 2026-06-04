@@ -34,7 +34,8 @@ public enum DialogueContextType
 {
     None = 0,
     Intro,
-    InGameSpot
+    InGameSpot,
+    Ending //06.04 추가
 }
 
 public static class DaniTechUIManagerExtension

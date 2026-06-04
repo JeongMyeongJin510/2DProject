@@ -5,7 +5,7 @@ public class GameClearUI : DaniTechUIBase
 {
 
     [Header("이미지")]
-    [SerializeField] private RawImage RawImage_GameOverImg;
+    [SerializeField] private RawImage RawImage_GameClearImg;
 
     [Header("버튼 등록 구간")]
     [SerializeField] private DaniTechUIButton Btn_GameQuit;
@@ -13,15 +13,27 @@ public class GameClearUI : DaniTechUIBase
     private void OnEnable()
     {
         Btn_GameQuit.BindOnClickButtonEvent(OnClick_GameQuit);
-        LoadAndSetGameOverImg();
+        LoadAndSetGameClearImg();
+
+        Btn_GameQuit.gameObject.SetActive(true);
+
+
 
     }
 
-    private void LoadAndSetGameOverImg()
+    private string GetRandomEndingDialogueId() //06.04 추가
+    {
+        int randomIndex = Random.Range(0, 2);
+        return randomIndex == 0 ? "dialogue_ending_1_100" : "dialogue_ending_2_100";
+    }
+
+
+
+    private void LoadAndSetGameClearImg()
     {
         string texturePath = "Texture2D/Image_GameClear";
 
-        DaniTechGameUtil.LoadAndSetTexture(RawImage_GameOverImg, texturePath).Forget();
+        DaniTechGameUtil.LoadAndSetTexture(RawImage_GameClearImg, texturePath).Forget();
     }
 
 

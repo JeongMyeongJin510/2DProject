@@ -2,6 +2,7 @@
   {
     "Id": "dialogue_mainstream_1_1_100",
     "CharacterDataId": null,
+    "SpeakerName": null,
     "Description": "새로운 세계에 접속 하셨습니다…<np>오랜시간 기다리셨는데..<np>제가 많이 늦었군요...",
     "NextDialogueId": "dialogue_mainstream_1_1_200",
     "SelectionNameList": null,
@@ -12,6 +13,7 @@
   {
     "Id": "dialogue_mainstream_1_1_200",
     "CharacterDataId": null,
+    "SpeakerName": null,
     "Description": "용사님이시어..고생하셨군요",
     "NextDialogueId": "dialogue_mainstream_1_1_300",
     "SelectionNameList": null,
@@ -22,6 +24,7 @@
   {
     "Id": "dialogue_mainstream_1_1_300",
     "CharacterDataId": null,
+    "SpeakerName": null,
     "Description": "다만 아직 야근이 남아 있습니다. 좀 더 고생해주세요.",
     "NextDialogueId": null,
     "SelectionNameList": null,
@@ -32,6 +35,7 @@
   {
     "Id": "dialogue_group_mainstream_1_2_100",
     "CharacterDataId": null,
+    "SpeakerName": null,
     "Description": "두둥..지금.. 배가 고픕니다!",
     "NextDialogueId": null,
     "SelectionNameList": [
@@ -48,6 +52,7 @@
   {
     "Id": "dialogue_group_mainstream_1_2_200",
     "CharacterDataId": null,
+    "SpeakerName": null,
     "Description": "커피인가..",
     "NextDialogueId": null,
     "SelectionNameList": null,
@@ -58,6 +63,7 @@
   {
     "Id": "dialogue_group_mainstream_1_2_300",
     "CharacterDataId": null,
+    "SpeakerName": null,
     "Description": "피자인가..",
     "NextDialogueId": null,
     "SelectionNameList": null,
@@ -68,6 +74,7 @@
   {
     "Id": "dialogue_group_mainstream_1_2_400",
     "CharacterDataId": null,
+    "SpeakerName": null,
     "Description": "일단 밥을 먹지 않고 조금 더 진행해본다!",
     "NextDialogueId": null,
     "SelectionNameList": null,
@@ -78,6 +85,7 @@
   {
     "Id": "dialogue_mainstream_2_1_100",
     "CharacterDataId": null,
+    "SpeakerName": null,
     "Description": "새로운 세계에 접속 하셨습니다…<np>여긴 꿈속 세상입니다.<np>여기서 탈출할 방법을 찾아야 합니다.",
     "NextDialogueId": "dialogue_mainstream_2_1_200",
     "SelectionNameList": null,
@@ -88,6 +96,7 @@
   {
     "Id": "dialogue_mainstream_2_1_200",
     "CharacterDataId": null,
+    "SpeakerName": null,
     "Description": "저 멀리 무언가 격렬하게 움직이고 있습니다...<np>자세히 살펴보니 잔뜩 흥분한 슬라임이었습니다!",
     "NextDialogueId": "dialogue_mainstream_2_1_300",
     "SelectionNameList": null,
@@ -98,6 +107,7 @@
   {
     "Id": "dialogue_mainstream_2_1_300",
     "CharacterDataId": null,
+    "SpeakerName": null,
     "Description": "저 슬라임에게 간다면 탈출할 방법이 있을지도 모른다는 생각에 다가가기로 결정했습니다!",
     "NextDialogueId": null,
     "SelectionNameList": null,
@@ -108,6 +118,7 @@
   {
     "Id": "dialogue_intro_1_100",
     "CharacterDataId": null,
+    "SpeakerName": "주인공",
     "Description": "(하품) 후아암…오늘도 완벽하게 아무것도 안 했다.",
     "NextDialogueId": "dialogue_intro_1_101",
     "SelectionNameList": null,
@@ -118,6 +129,7 @@
   {
     "Id": "dialogue_intro_1_101",
     "CharacterDataId": null,
+    "SpeakerName": "주인공",
     "Description": "내 꿈은 오직 하나…아무것도 안 해도 통장에 돈이 썩어 넘치는 '돈 많은 백수'가 되는 것뿐인데…",
     "NextDialogueId": "dialogue_intro_1_102",
     "SelectionNameList": null,
@@ -128,6 +140,7 @@
   {
     "Id": "dialogue_intro_1_102",
     "CharacterDataId": null,
+    "SpeakerName": "주인공",
     "Description": "하지만 현실은 통장 잔고 0원…이대로는 조만간 굶어 죽겠어!!",
     "NextDialogueId": "dialogue_intro_1_103",
     "SelectionNameList": null,
@@ -138,6 +151,7 @@
   {
     "Id": "dialogue_intro_1_103",
     "CharacterDataId": null,
+    "SpeakerName": null,
     "Description": "[국왕의 특별 공고] 나이가 들어 기력이 쇠한 국왕 폐하께서 전설의 영약, '황금 사과'를 구하는 자를 찾으신다!",
     "NextDialogueId": "dialogue_intro_1_104",
     "SelectionNameList": null,
@@ -148,6 +162,7 @@
   {
     "Id": "dialogue_intro_1_104",
     "CharacterDataId": null,
+    "SpeakerName": null,
     "Description": "사과를 가져오는 자에게는 평생 먹고 놀 수 있는 막대한 금은보화와 영지를 하사하겠노라!",
     "NextDialogueId": "dialogue_intro_1_105",
     "SelectionNameList": null,
@@ -158,6 +173,7 @@
   {
     "Id": "dialogue_intro_1_105",
     "CharacterDataId": null,
+    "SpeakerName": "주인공",
     "Description": "……이거다!!",
     "NextDialogueId": "dialogue_intro_1_106",
     "SelectionNameList": null,
@@ -168,6 +184,7 @@
   {
     "Id": "dialogue_intro_1_106",
     "CharacterDataId": null,
+    "SpeakerName": "주인공",
     "Description": "황금 사과만 가져가면 평생 일 안하고 놀고먹을 수 있다는 거잖아?!",
     "NextDialogueId": "dialogue_intro_1_107",
     "SelectionNameList": null,
@@ -178,6 +195,7 @@
   {
     "Id": "dialogue_intro_1_107",
     "CharacterDataId": null,
+    "SpeakerName": "주인공",
     "Description": "내 완벽한 '백수 라이프'를 위해, 저 사과는 무조건 내가 가진다!",
     "NextDialogueId": null,
     "SelectionNameList": null,
@@ -188,6 +206,7 @@
   {
     "Id": "dialogue_play_1_100",
     "CharacterDataId": null,
+    "SpeakerName": "주인공",
     "Description": "좋아, 목표는 저 산 꼭대기다! ...근데 몬스터들이 왜 이렇게 많아?",
     "NextDialogueId": "dialogue_play_1_101",
     "SelectionNameList": null,
@@ -198,11 +217,56 @@
   {
     "Id": "dialogue_play_1_101",
     "CharacterDataId": null,
+    "SpeakerName": "주인공",
     "Description": "방해하지 마라, 몬스터 놈들아! 내 소중한 백수의 꿈을 막을 순 없다!!",
     "NextDialogueId": null,
     "SelectionNameList": null,
     "SelectionDialogueIdList": null,
     "TexturePath": null,
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_ending_1_100",
+    "CharacterDataId": null,
+    "SpeakerName": "국왕",
+    "Description": "\"오오! 약속대로 황금 10만 냥과 영지를 주겠네!",
+    "NextDialogueId": "dialogue_ending_1_101",
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Image_EndingA",
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_ending_1_101",
+    "CharacterDataId": null,
+    "SpeakerName": "주인공",
+    "Description": "\"역시 돈 많은 백수가 최고야!\"",
+    "NextDialogueId": null,
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Image_EndingA",
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_ending_2_100",
+    "CharacterDataId": null,
+    "SpeakerName": "국왕",
+    "Description": "\"오오! 이 대단한 사과를 구해오다니! 이제 매일 밤새도록 나라 수수께끼와 정무를 돌보아라!\"",
+    "NextDialogueId": "dialogue_ending_2_101",
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Image_EndingB",
+    "VoicePath": null
+  },
+  {
+    "Id": "dialogue_ending_2_101",
+    "CharacterDataId": null,
+    "SpeakerName": "주인공",
+    "Description": "\"아니, 난 그냥 놀고먹고 싶었다고!!\"",
+    "NextDialogueId": null,
+    "SelectionNameList": null,
+    "SelectionDialogueIdList": null,
+    "TexturePath": "Texture2D/Image_EndingB",
     "VoicePath": null
   }
 ]

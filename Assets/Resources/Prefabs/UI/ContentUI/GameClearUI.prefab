@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db22a03bf3ae90845af0139b607d8a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameClearUI
-  RawImage_GameOverImg: {fileID: 2833282359160371955}
+  RawImage_GameClearImg: {fileID: 2833282359160371955}
   Btn_GameQuit: {fileID: 8571071962337212895}
 --- !u!1 &5202311319100492763
 GameObject:

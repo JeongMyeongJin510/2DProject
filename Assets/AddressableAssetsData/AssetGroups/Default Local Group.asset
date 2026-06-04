@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ee73469f9cc6ad49b0b5fc4ba03ae66
+    m_Address: Texture2D/Image_EndingB
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 12bba31e10a26b645908ca35cce3ac2a
     m_Address: Boots/BattleguardArmor
     m_ReadOnly: 0
@@ -112,6 +117,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6caf508fb2c9a304cbab300f30d5cf19
     m_Address: Sound/Voice_Pug_1_I_WantToEatPizza
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ecccbf1ae7e70944b17333e1703d51a
+    m_Address: Texture2D/Image_EndingA
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

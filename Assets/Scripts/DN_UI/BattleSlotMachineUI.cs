@@ -30,6 +30,9 @@ public class BattleSlotMachineUI : DaniTechUIBase
     // 6 = 대각선 {0,4,8} / 7 = 대각선 {2,4,6}
     private Dictionary<int, GameObject> _bingoLineDict = new Dictionary<int, GameObject>();
 
+    private bool _isSpinning = false;
+
+
 
     private void Awake()
     {
@@ -54,13 +57,31 @@ public class BattleSlotMachineUI : DaniTechUIBase
 
     public void OnClick_ItemCreatSlot()
     {
+        // 스핀 중이면 무시
+        if (_isSpinning == true)
+        {
+            return;
+        }
+
+        _isSpinning = true;
         Debug.LogWarning("스핀~");
+        StartSpin();
+
+
+
+        Invoke("ResetSpinCooldown", 2f);
+
+
         //for (int i = 0; i < 9; i++) // AI 참고 추가
         //{
         //    // CreatItemSlot();
         //}
 
-        StartSpin();
+    }
+
+    private void ResetSpinCooldown()
+    {
+        _isSpinning = false;
     }
 
     private void StartSpin()

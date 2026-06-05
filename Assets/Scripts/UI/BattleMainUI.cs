@@ -70,7 +70,15 @@ public class BattleMainUI : DaniTechUIBase
             _maxMonsterHp = monsterComponent._baseHp;
             _monsterBaseAtk = monsterComponent._baseAtk;
 
-            _targetMonsterName = monsterComponent.gameObject.name;
+            //_targetMonsterName = monsterComponent.gameObject.name; // 승리 시 팝업에 몬스터Id(클론)이 나옴
+
+            //06.05 승리 시 팝업에 몬스터 이름이 나오도록 수정
+            var monsterData = DaniTechGameDataManager.Instance.GetDNMonsterData(monsterDataId);
+            if (monsterData != null)
+            {
+                _targetMonsterName = monsterData.Name;
+            }
+
 
             var monsterSpriteRenderer = monsterComponent.GetComponentInChildren<SpriteRenderer>();
 
